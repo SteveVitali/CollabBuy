@@ -20,7 +20,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _facebookPictures = [[NSMutableArray alloc] init];
+        // super code wahah
     }
     return self;
 }
