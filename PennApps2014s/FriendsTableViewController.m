@@ -64,6 +64,10 @@
             NSLog(@"%@", friendUsers);
             NSMutableDictionary *tempPictureData = [[NSMutableDictionary alloc] initWithCapacity:[_facebookFriends count]];
             
+            _facebookFriends = (NSArray *)friendUsers;
+            
+            [self.tableView reloadData];
+            
             for (PFUser *user in friendUsers) {
                 
                 PFFile *imageFile = (PFFile *)[user valueForKey:@"profilePicture"];
@@ -82,7 +86,6 @@
                 //[self.facebookPictures addObject:[UIImage imageWithData:[imageFile getData]]];
             }
             
-            _facebookFriends = (NSArray *)friendUsers;
             _facebookPictures = (NSDictionary *)tempPictureData;
             
             [self.tableView reloadData];
