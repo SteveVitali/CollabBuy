@@ -59,13 +59,12 @@
             
             // findObjects will return a list of PFUsers that are friends
             // with the current user
-            NSArray *friendUsers = [friendQuery findObjects];
+            NSMutableArray *friendUsers = (NSMutableArray *)[friendQuery findObjects];
             
             NSLog(@"%@", friendUsers);
-            _facebookFriends = friendUsers;
-            NSMutableArray *tempPictureData = [[NSMutableArray alloc] initWithCapacity:[_facebookFriends count]];
+            NSMutableDictionary *tempPictureData = [[NSMutableDictionary alloc] initWithCapacity:[_facebookFriends count]];
             
-            for (PFUser *user in _facebookFriends) {
+            for (PFUser *user in friendUsers) {
                 
                 PFFile *imageFile = (PFFile *)[user valueForKey:@"profilePicture"];
                 
@@ -73,7 +72,7 @@
                     if (!error) {
                         // NSLog(@"Data received. Data: %@", data);
                         UIImage *profilePicture = [UIImage imageWithData:data];
-                        [tempPictureData addObject:profilePicture];
+                        [tempPictureData setObject:profilePicture forKey:[user objectForKey:@"facebookID"]];
                     } else {
                         NSLog(@"There was an error getting the data.");
                     }
@@ -83,7 +82,8 @@
                 //[self.facebookPictures addObject:[UIImage imageWithData:[imageFile getData]]];
             }
             
-            _facebookPictures = (NSArray *)tempPictureData;
+            _facebookFriends = (NSArray *)friendUsers;
+            _facebookPictures = (NSDictionary *)tempPictureData;
             
             [self.tableView reloadData];
         }
@@ -119,7 +119,7 @@
     PFObject *object = (PFObject *)[self.facebookFriends objectAtIndex:indexPath.row];
     cell.nameLabel.text = [object valueForKey:@"name"];
     
-    cell.imageView.image = [self.facebookPictures objectAtIndex:indexPath.row];
+    cell.imageView.image = [self.facebookPictures objectForKey:[object objectForKey:@"facebookID"]];
     
     return cell;
 }
