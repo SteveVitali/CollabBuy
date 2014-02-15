@@ -71,7 +71,27 @@
     [invoice saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         NSLog(@"aw yeah, invoice sent");
+        [self setPendingItems:items andInvoice:(PFObject *)invoice];
     }];
+}
+
+- (void)setPendingItems:(NSArray *)items andInvoice:(PFObject *)invoice {
+    
+    for (PFObject *item in items) {
+        
+        if ([[item valueForKey:@"paidFor"] isEqualToString:@"YES"]) {
+            //Something
+        }
+        else {
+            [item setValue:@"YES" forKey:@"paymentPending"];
+            [item saveInBackground];
+        }
+    }
+    if (![[invoice valueForKey:@"transactionExecuted"] isEqualToString:@"Yes"]) {
+        
+        [invoice setValue:@"YES" forKey:@"transactionPending"];
+        [invoice saveInBackground];
+    }
 }
 
 - (NSArray *)getAllTableViewCells {

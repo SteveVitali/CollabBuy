@@ -7,11 +7,13 @@
 //
 
 #import <VenmoAppSwitch/Venmo.h>
+#import <Parse/Parse.h>
 
 @interface InvoiceViewController : UITableViewController
 
 // This is the handle of the person to whom the recipient is paying the money
-@property NSString *invoiceSenderHandle;
+//@property NSString *invoiceSenderHandle;
+@property PFObject *invoice;
 @property NSArray *items;
 @property NSArray *prices;
 

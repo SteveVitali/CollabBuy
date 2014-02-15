@@ -8,6 +8,7 @@
 
 #import "InvoiceListViewController.h"
 #import "InvoiceViewController.h"
+#import "TDBadgedCell.h"
 
 @interface InvoiceListViewController ()
 
@@ -82,11 +83,11 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    TDBadgedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     //  UITableViewCell *cell;
     // Configure the cell...
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
     
@@ -100,9 +101,42 @@
     NSArray *items = [invoice valueForKey:@"items"];
     NSString *listString = [self getListOfItemsStringWithItems:items];
 
-    
     cell.textLabel.text = senderName;
     cell.detailTextLabel.text = [self getListOfItemsStringWithItems:items];
+    
+    if ([[invoice valueForKey:@"transactionExecuted"] isEqualToString:@"YES"]) {
+        
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        
+        // Badges, motherfucker
+        cell.badgeString = @"Paid";
+        cell.badgeColor = [UIColor grayColor];
+        cell.badge.radius = 9;
+        cell.badge.fontSize = 18;
+        cell.showShadow = YES;
+    }
+    else if ([[invoice valueForKey:@"transactionPending"] isEqualToString:@"YES"]) {
+        
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        
+        // Badges, motherfucker
+        cell.badgeString = @"Pending";
+        cell.badgeColor = [UIColor redColor];
+        cell.badge.radius = 9;
+        cell.badge.fontSize = 18;
+        cell.showShadow = YES;
+    }
+    else {
+        
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
+        
+        // Badges, motherfucker
+        //cell.badgeString = @"";
+        //cell.badgeColor = [UIColor redColor];
+    }
     
     return cell;
 }
@@ -121,7 +155,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     self.selectedInvoiceIndex = indexPath.row;
-    [self performSegueWithIdentifier:@"viewInvoice" sender:self];
+    
+    PFObject *invoice = (PFObject *)[self.invoices objectAtIndex:self.selectedInvoiceIndex];
+    
+    if ([[invoice valueForKey:@"transactionExecuted"] isEqualToString:@"YES"]) {
+        
+        // "previewInvoice" is for after you've already confirmed it in "viewInvoice" and paid it/etc.
+        [self performSegueWithIdentifier:@"previewInvoice" sender:self];
+    }
+    else {
+        [self performSegueWithIdentifier:@"viewInvoice" sender:self];
+    }
 }
 
 
@@ -138,10 +182,10 @@
         controller.items = [[self.invoices objectAtIndex:self.selectedInvoiceIndex] valueForKey:@"items"];
         controller.prices= [[self.invoices objectAtIndex:self.selectedInvoiceIndex] valueForKey:@"prices"];
         
-        PFObject *sender = (PFObject *)[[self.invoices objectAtIndex:self.selectedInvoiceIndex] valueForKey:@"sender"];
-        NSString *senderHandle = [sender valueForKey:@"venmoHandle"];
-        controller.invoiceSenderHandle = senderHandle;
-        NSLog(@"sender handle: %@", senderHandle);
+        //PFObject *sender = (PFObject *)[[self.invoices objectAtIndex:self.selectedInvoiceIndex] valueForKey:@"sender"];
+        //NSString *senderHandle = [sender valueForKey:@"venmoHandle"];
+        controller.invoice = (PFObject *)[self.invoices objectAtIndex:self.selectedInvoiceIndex];
+        //NSLog(@"sender handle: %@", senderHandle);
     }
 }
 

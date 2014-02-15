@@ -8,6 +8,7 @@
 
 #import "ListFriendItemsViewController.h"
 #import "ClaimItemsViewController.h"
+#import "TDBadgedCell.h"
 
 @interface ListFriendItemsViewController ()
 
@@ -79,18 +80,53 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    TDBadgedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
-    PFObject *object = (PFObject *)[self.items objectAtIndex:indexPath.row];
-    cell.textLabel.text = [object valueForKey:@"name"];
-    cell.detailTextLabel.text = [object valueForKey:@"desc"];
-    NSLog(@"%@",[object valueForKey:@"desc"]);
+    PFObject *item = (PFObject *)[self.items objectAtIndex:indexPath.row];
+    cell.textLabel.text = [item valueForKey:@"name"];
+    cell.detailTextLabel.text = [item valueForKey:@"desc"];
+    NSLog(@"%@",[item valueForKey:@"desc"]);
+    
+    if ([[item valueForKey:@"paidFor"] isEqualToString:@"YES"]) {
+        
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        
+        // Badges, motherfucker
+        cell.badgeString = @"Paid";
+        cell.badgeColor = [UIColor grayColor];
+        cell.badge.radius = 9;
+        cell.badge.fontSize = 18;
+        cell.showShadow = YES;
+    }
+    else if ([[item valueForKey:@"paymentPending"] isEqualToString:@"YES"]) {
+        
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        
+        // Badges, motherfucker
+        cell.badgeString = @"Pending";
+        cell.badgeColor = [UIColor redColor];
+        cell.badge.radius = 9;
+        cell.badge.fontSize = 18;
+        cell.showShadow = YES;
+    }
+    else {
+        
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
+        
+        
+        // Badges, motherfucker
+        //cell.badgeString = @"";
+        //cell.badgeColor = [UIColor redColor];
+    }
 
     return cell;
 }
@@ -106,25 +142,33 @@
     PFObject *obj = (PFObject *)[self.items objectAtIndex:indexPath.row];
     NSUInteger index = [_selected indexOfObject:obj];
     
-    if ( index == NSNotFound )
-        // if the associated PFObject (the item) isn't in the selected array
-    {
-        NSLog(@"selecting");
-        // add it to the array
-        [_selected addObject:obj];
+    if ([[obj valueForKey:@"paidFor"] isEqualToString:@"YES"] || [[obj valueForKey:@"paymentPending"] isEqualToString:@"YES"]) {
         
-        // select the cell (checkmark)
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        // Then, it can't be selected, so don't run this code.
+    }
+    // Then, it can be selected/deselected
+    else {
+        if ( index == NSNotFound ) {
+            // if the associated PFObject (the item) isn't in the selected array
         
-    } else
-        // if it was already selected
-    {
-        NSLog(@"deselecting");
-        // remove it from the array
-        [_selected removeObjectAtIndex:index];
+            NSLog(@"selecting");
+            // add it to the array
+            [_selected addObject:obj];
+            
+            // select the cell (checkmark)
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+            
+        }
+        else {
+            // if it was already selected
         
-        // deselect the cell (no checkmark)
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+            NSLog(@"deselecting");
+            // remove it from the array
+            [_selected removeObjectAtIndex:index];
+            
+            // deselect the cell (no checkmark)
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     
 }

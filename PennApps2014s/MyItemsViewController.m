@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "CreateItemViewController.h"
 #import "EditItemViewController.h"
+#import "TDBadgedCell.h"
 
 static NSString *const kVenmoAppId      = @"1588";
 static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
@@ -304,19 +305,54 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
   
     static NSString *CellIdentifier = @"Cell";
     
-   UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+   TDBadgedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
   //  UITableViewCell *cell;
     // Configure the cell...
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
-    PFObject *object = (PFObject *)[self.items objectAtIndex:indexPath.row];
-    cell.textLabel.text = [object valueForKey:@"name"];
-    cell.detailTextLabel.text = [object valueForKey:@"desc"];
+    PFObject *item = (PFObject *)[self.items objectAtIndex:indexPath.row];
+    cell.textLabel.text = [item valueForKey:@"name"];
+    cell.detailTextLabel.text = [item valueForKey:@"desc"];
     NSLog(@"%@", cell.detailTextLabel.text);
+    
+    if ([[item valueForKey:@"paidFor"] isEqualToString:@"YES"]) {
+        
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        
+        // Badges, motherfucker
+        cell.badgeString = @"Paid";
+        cell.badgeColor = [UIColor grayColor];
+        cell.badge.radius = 9;
+        cell.badge.fontSize = 18;
+        cell.showShadow = YES;
+    }
+    else if ([[item valueForKey:@"paymentPending"] isEqualToString:@"YES"]) {
+        
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        
+        // Badges, motherfucker
+        cell.badgeString = @"Pending";
+        cell.badgeColor = [UIColor redColor];
+        cell.badge.radius = 9;
+        cell.badge.fontSize = 18;
+        cell.showShadow = YES;
+    }
+    else {
+        
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
+        
+        // Badges, motherfucker
+        //cell.badgeString = @"";
+        //cell.badgeColor = [UIColor redColor];
+    }
+    
     return cell;
 }
 

@@ -60,10 +60,28 @@
         
         totalPrice = totalPrice + price.floatValue;
     }
+    NSString *description = [self getVenmoDescriptionWithItems:self.items];
     
-    NSString *description = [self getListOfItemsStringWithItems:self.items];
-    NSString *userHandle  = self.invoiceSenderHandle;
+    PFObject *senderUser = (PFObject *)[self.invoice valueForKey:@"sender"];
+    NSString *senderHandle = [senderUser valueForKey:@"venmoHandle"];
+    NSString *userHandle  = senderHandle;
+    
+    // Assumes "cancel" button not pressed in Venmo app
+    [self setTransactionExecuted:self.invoice];
     [self sendApptoVenmoWithAmount:totalPrice note:description toUserHandle:userHandle];
+}
+
+- (void)setTransactionExecuted:(PFObject *)invoice {
+    
+    NSArray *items = [self.invoice valueForKey:@"items"];
+    for (PFObject *item in items) {
+        
+        [item setValue:@"YES" forKey:@"paidFor"];
+        [item saveInBackground];
+    }
+    [self.invoice setValue:@"YES" forKey:@"transactionExecuted"];
+    
+    [self.invoice saveInBackground];
 }
 
 - (void)sendApptoVenmoWithAmount:(float)totalPrice note:(NSString *)description toUserHandle:(NSString *)userHandle {
@@ -77,6 +95,7 @@
     
     VenmoViewController *venmoViewController = [venmoClient viewControllerWithTransaction:
                                                 venmoTransaction];
+
     if (venmoViewController) {
         // Deprecated [self presentModalViewController:venmoViewController animated:YES];
         [self.navigationController presentViewController:venmoViewController animated:YES completion:nil];
@@ -86,7 +105,7 @@
 
 - (IBAction)didPressTestVenmoButton:(id)sender {
     
-    NSLog(@"wat");
+    NSLog(@"wasdfasdf");
 
 }
 
@@ -120,7 +139,7 @@
     // Configure the cell...
     PFObject *object = (PFObject *)[self.items objectAtIndex:indexPath.row];
     cell.textLabel.text = [object valueForKey:@"name"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", [[self.prices objectAtIndex:indexPath.row] floatValue]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"$ %.2f", [[self.prices objectAtIndex:indexPath.row] floatValue]];
     NSLog(@"%@", cell.detailTextLabel.text);
     return cell;
 }
@@ -136,10 +155,42 @@
     return listString;
 }
 
+- (NSString *)getVenmoDescriptionWithItems:(NSArray *)items {
+    
+    NSString *listString = @"";
+    for (int i=0; i<[items count]; i++) {
+        
+        listString = [listString stringByAppendingString:[NSString stringWithFormat:@"%@: $%.2f \n", [[items objectAtIndex:i] valueForKey:@"name"], ((NSNumber *)[self.prices objectAtIndex:i]).floatValue]];
+    }
+    return listString;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 
+}
+
+
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+     // Return NO if you do not want the specified item to be editable.
+     return YES;
+ }
+
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+     if (editingStyle == UITableViewCellEditingStyleDelete) {
+         // Delete the row from the data source
+         PFObject *item = ((PFObject *)[self.items objectAtIndex:indexPath.row]);
+         [item deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+         }];
+     }
+     else if (editingStyle == UITableViewCellEditingStyleInsert) {
+         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
 }
 
 @end

@@ -13,6 +13,7 @@
 #import <Parse/Parse.h>
 #import "MyItemsViewController.h"
 #import "InvoiceViewController.h"
+#import "LibraryAPi.h"
 
 @implementation AppDelegate
 
@@ -31,9 +32,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                   clientKey:@"kd1fW1ctsBT3fYKONKfX0F6lRDQ7oNWlowt2PUFB"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
     [PFFacebookUtils initializeFacebook];
     
+    self.venmoClient = [[LibraryAPI sharedInstance] venmoClient];
+
     return YES;
 }
 
@@ -58,7 +60,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message
                                                                    delegate:nil cancelButtonTitle:@"OK"
                                                           otherButtonTitles:nil];
-                [alertView show];
+                //[alertView show];
+                
             } else { // error
                 NSLog(@"transaction error code: %lld", (long long)error.code);
             }
@@ -73,7 +76,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                       sourceApplication:sourceApplication
                             withSession:[PFFacebookUtils session]];
     }
-    return YES;
+    return NO;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
