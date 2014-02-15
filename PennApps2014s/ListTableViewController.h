@@ -10,4 +10,6 @@
 
 @interface ListTableViewController : QueryTableViewController
 
+@property NSArray *items; 
+
 @end

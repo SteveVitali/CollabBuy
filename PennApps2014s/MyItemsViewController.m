@@ -35,6 +35,34 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     if (self.venmoClient) NSLog(@"venmo client initialized");
     else                  NSLog(@"no venmo no mo");
     
+    if ([PFUser currentUser]) {
+
+        [self executeQueryAndReloadTable];
+    }
+    
+    //PFFile *file = (PFFile *)[[PFUser currentUser] objectForKey:@"profilePicture"];
+   // [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageWithData:file.getData]]];
+
+    
+}
+
+- (PFQuery *)queryForTable {
+    
+    PFQuery *userItemsQuery = [PFQuery queryWithClassName:@"Item"];
+    
+    [userItemsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [userItemsQuery orderByDescending:@"createdAt"];
+    
+    return userItemsQuery;
+}
+
+- (void)executeQueryAndReloadTable {
+    
+    [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        self.items = objects;
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)initializeFacebookLogin {
@@ -137,6 +165,13 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
             // Now add the data to the UI elements
             // ...
             // ...
+            [[PFUser currentUser] setValue:facebookID forKey:@"facebookID"];
+            [[PFUser currentUser] setValue:name forKey:@"name"];
+            
+            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
+                [self executeQueryAndReloadTable];
+            }];
         }
     }];
 }
@@ -145,6 +180,7 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
 
 // Called every time a chunk of the data is received
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    
     [self.imageData appendData:data]; // Build the image
 }
 
@@ -153,6 +189,15 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     // Set the image in the header imageView
     
     //headerImageView.image = [UIImage imageWithData:imageData];
+    
+    PFFile *photoFile = [PFFile fileWithData:self.imageData];
+    
+    [photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+        [[PFUser currentUser] setValue:photoFile forKey:@"profilePicture"];
+    }];
+    
+    //[self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageWithData:self.imageData]]];
 }
 
 
@@ -179,5 +224,90 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [self.items count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  
+    static NSString *CellIdentifier = @"Cell";
+    
+   // UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell;
+    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                               reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell...
+    PFObject *object = (PFObject *)[self.items objectAtIndex:indexPath.row];
+    cell.textLabel.text = [object valueForKey:@"name"];
+    
+    return cell;
+}
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a story board-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ 
+ */
 
 @end
