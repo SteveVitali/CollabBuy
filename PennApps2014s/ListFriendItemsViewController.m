@@ -1,4 +1,4 @@
-//
+    //
 //  ListFriendItemsViewController.m
 //  PennApps2014s
 //
@@ -7,6 +7,7 @@
 //
 
 #import "ListFriendItemsViewController.h"
+#import "ClaimItemsViewController.h"
 
 @interface ListFriendItemsViewController ()
 
@@ -131,6 +132,18 @@
     
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"claimItems"]) {
+        
+        UINavigationController *navController = [segue destinationViewController];
+        NSLog(@"nav: %@", navController.class);
+        ClaimItemsViewController *destinationController = (ClaimItemsViewController *)[navController viewControllers][0];
+        destinationController.claimedItems = [NSArray arrayWithArray:_selected];
+        NSLog(@"dest: %@", destinationController.class);
+        //destinationController.delegate = self;
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {

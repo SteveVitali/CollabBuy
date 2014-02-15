@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Steve John Vitali. All rights reserved.
 //
 
-@interface ClaimItemsViewController : UIViewController
+@interface ClaimItemsViewController : UITableViewController
+
+@property NSArray *claimedItems;
 
 @end

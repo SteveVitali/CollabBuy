@@ -306,25 +306,6 @@
             </objects>
             <point key="canvasLocation" x="1197" y="552"/>
         </scene>
-        <!--Claim Items View Controller-->
-        <scene sceneID="gR9-hl-u0B">
-            <objects>
-                <viewController id="UAf-ip-Gm2" customClass="ClaimItemsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XtS-7b-5yo"/>
-                        <viewControllerLayoutGuide type="bottom" id="env-DU-jrr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="73m-0a-Ozn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="nqX-I1-Ifs"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L6s-3a-aRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1631" y="-97"/>
-        </scene>
         <!--List Friend Items View Controller-->
         <scene sceneID="K03-W1-3nw">
             <objects>
@@ -365,15 +346,92 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="zXw-gv-h3Y">
-                        <barButtonItem key="rightBarButtonItem" title="Claim Items" id="Ax7-Nr-DNr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Claim Items" id="Ax7-Nr-DNr">
+                            <connections>
+                                <segue destination="U9J-yE-5ds" kind="modal" identifier="claimItems" id="7Cn-XM-Zrs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="UAf-ip-Gm2" kind="push" identifier="claimItems" id="nU8-Il-hKp"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0O-9P-521" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1197" y="-97"/>
+        </scene>
+        <!--Claim Items View Controller - Root View Controller-->
+        <scene sceneID="k3N-Uq-16T">
+            <objects>
+                <tableViewController id="KVg-lM-W9D" customClass="ClaimItemsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RRp-ze-BBi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="4tD-jZ-iwW" detailTextLabel="NJx-LJ-Mup" rowHeight="54" style="IBUITableViewCellStyleSubtitle" id="u4S-N0-IoH" customClass="ClaimItemsTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="54"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u4S-N0-IoH" id="Sl7-v3-a8y">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4tD-jZ-iwW">
+                                            <rect key="frame" x="15" y="8" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iDq-fr-SCL">
+                                            <rect key="frame" x="226" y="12" width="74" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="74" id="nT1-eM-RLI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NJx-LJ-Mup">
+                                            <rect key="frame" x="15" y="30" width="43" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iDq-fr-SCL" firstAttribute="top" secondItem="Sl7-v3-a8y" secondAttribute="top" constant="12" id="njD-jD-dIe"/>
+                                        <constraint firstAttribute="trailing" secondItem="iDq-fr-SCL" secondAttribute="trailing" constant="20" symbolic="YES" id="rKb-hz-r78"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="price" destination="iDq-fr-SCL" id="8uW-dr-JiO"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KVg-lM-W9D" id="Cat-YH-p2n"/>
+                            <outlet property="delegate" destination="KVg-lM-W9D" id="sqP-ib-9xG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="dPr-1Q-aY2"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zqa-5n-Gly" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2165" y="-110"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="l4Y-4Q-Z17">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="U9J-yE-5ds" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r6G-mB-q1y">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KVg-lM-W9D" kind="relationship" relationship="rootViewController" id="9wh-s8-exQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4VL-DH-rqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1631" y="-110"/>
         </scene>
         <!--Invoice List View Controller - Pending Payments-->
         <scene sceneID="ZLJ-31-Wox">

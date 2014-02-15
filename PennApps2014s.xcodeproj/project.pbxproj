@@ -49,6 +49,7 @@
 		BC8BE67518AF6F870035A493 /* glyphicons_449_fax.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67418AF6F870035A493 /* glyphicons_449_fax.png */; };
 		BC8BE67718AF6F950035A493 /* glyphicons_208_cart_out.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67618AF6F950035A493 /* glyphicons_208_cart_out.png */; };
 		BC8BE67918AF6FA60035A493 /* glyphicons_280_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */; };
+		BC8BE68018AFB8210035A493 /* ClaimItemsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8BE67F18AFB8210035A493 /* ClaimItemsTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,8 @@
 		BC8BE67418AF6F870035A493 /* glyphicons_449_fax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_449_fax.png; sourceTree = "<group>"; };
 		BC8BE67618AF6F950035A493 /* glyphicons_208_cart_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_208_cart_out.png; sourceTree = "<group>"; };
 		BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_280_settings.png; sourceTree = "<group>"; };
+		BC8BE67E18AFB8210035A493 /* ClaimItemsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimItemsTableViewCell.h; sourceTree = "<group>"; };
+		BC8BE67F18AFB8210035A493 /* ClaimItemsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimItemsTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +271,8 @@
 				11076C0718AF03A900A87B49 /* Main.storyboard */,
 				1196BD4A18AF54FF0089EB9C /* FriendTableViewCell.h */,
 				1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */,
+				BC8BE67E18AFB8210035A493 /* ClaimItemsTableViewCell.h */,
+				BC8BE67F18AFB8210035A493 /* ClaimItemsTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 				1196BD4C18AF54FF0089EB9C /* FriendTableViewCell.m in Sources */,
 				11076BD918AF030E00A87B49 /* main.m in Sources */,
 				11076C2E18AF083600A87B49 /* ListFriendItemsViewController.m in Sources */,
+				BC8BE68018AFB8210035A493 /* ClaimItemsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
