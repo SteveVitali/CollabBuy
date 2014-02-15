@@ -45,6 +45,10 @@
 		11076C4018AF094000A87B49 /* FindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3F18AF094000A87B49 /* FindFriendsViewController.m */; };
 		111E0CE718AF1F72004BBF75 /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E0CE618AF1F72004BBF75 /* ListTableViewController.m */; };
 		1196BD4C18AF54FF0089EB9C /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */; };
+		BC8BE67318AF6F7E0035A493 /* glyphicons_043_group.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67218AF6F7E0035A493 /* glyphicons_043_group.png */; };
+		BC8BE67518AF6F870035A493 /* glyphicons_449_fax.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67418AF6F870035A493 /* glyphicons_449_fax.png */; };
+		BC8BE67718AF6F950035A493 /* glyphicons_208_cart_out.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67618AF6F950035A493 /* glyphicons_208_cart_out.png */; };
+		BC8BE67918AF6FA60035A493 /* glyphicons_280_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +117,10 @@
 		111E0CE618AF1F72004BBF75 /* ListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewController.m; sourceTree = "<group>"; };
 		1196BD4A18AF54FF0089EB9C /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
 		1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
+		BC8BE67218AF6F7E0035A493 /* glyphicons_043_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_043_group.png; sourceTree = "<group>"; };
+		BC8BE67418AF6F870035A493 /* glyphicons_449_fax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_449_fax.png; sourceTree = "<group>"; };
+		BC8BE67618AF6F950035A493 /* glyphicons_208_cart_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_208_cart_out.png; sourceTree = "<group>"; };
+		BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_280_settings.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +217,7 @@
 		11076BD318AF030E00A87B49 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BC8BE67118AF6F570035A493 /* glyphicons */,
 				11076BD418AF030E00A87B49 /* PennApps2014s-Info.plist */,
 				11076BD518AF030E00A87B49 /* InfoPlist.strings */,
 				11076BD818AF030E00A87B49 /* main.m */,
@@ -292,6 +301,17 @@
 			name = ListTableViewControllers;
 			sourceTree = "<group>";
 		};
+		BC8BE67118AF6F570035A493 /* glyphicons */ = {
+			isa = PBXGroup;
+			children = (
+				BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */,
+				BC8BE67218AF6F7E0035A493 /* glyphicons_043_group.png */,
+				BC8BE67618AF6F950035A493 /* glyphicons_208_cart_out.png */,
+				BC8BE67418AF6F870035A493 /* glyphicons_449_fax.png */,
+			);
+			name = glyphicons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -368,9 +388,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC8BE67918AF6FA60035A493 /* glyphicons_280_settings.png in Resources */,
 				11076BE518AF030E00A87B49 /* Images.xcassets in Resources */,
+				BC8BE67318AF6F7E0035A493 /* glyphicons_043_group.png in Resources */,
 				11076BD718AF030E00A87B49 /* InfoPlist.strings in Resources */,
+				BC8BE67718AF6F950035A493 /* glyphicons_208_cart_out.png in Resources */,
 				11076C0818AF03A900A87B49 /* Main.storyboard in Resources */,
+				BC8BE67518AF6F870035A493 /* glyphicons_449_fax.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
