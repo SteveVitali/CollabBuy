@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <VenmoAppSwitch/Venmo.h>
+#import "MyItemsViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property MyItemsViewController *mainViewController;
+
+@property VenmoClient *venmoClient;
 
 @end

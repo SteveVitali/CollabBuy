@@ -13,14 +13,26 @@
 		11076BD718AF030E00A87B49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11076BD518AF030E00A87B49 /* InfoPlist.strings */; };
 		11076BD918AF030E00A87B49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076BD818AF030E00A87B49 /* main.m */; };
 		11076BDD18AF030E00A87B49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076BDC18AF030E00A87B49 /* AppDelegate.m */; };
-		11076BE018AF030E00A87B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11076BDE18AF030E00A87B49 /* Main.storyboard */; };
-		11076BE318AF030E00A87B49 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076BE218AF030E00A87B49 /* ViewController.m */; };
+		11076BE318AF030E00A87B49 /* MyItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076BE218AF030E00A87B49 /* MyItemsViewController.m */; };
 		11076BE518AF030E00A87B49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11076BE418AF030E00A87B49 /* Images.xcassets */; };
 		11076BEC18AF030E00A87B49 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076BEB18AF030E00A87B49 /* XCTest.framework */; };
 		11076BED18AF030E00A87B49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076BCC18AF030E00A87B49 /* Foundation.framework */; };
 		11076BEE18AF030E00A87B49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076BD018AF030E00A87B49 /* UIKit.framework */; };
 		11076BF618AF030E00A87B49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11076BF418AF030E00A87B49 /* InfoPlist.strings */; };
 		11076BF818AF030E00A87B49 /* PennApps2014sTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076BF718AF030E00A87B49 /* PennApps2014sTests.m */; };
+		11076C0418AF039100A87B49 /* VenmoAppSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0118AF039100A87B49 /* VenmoAppSwitch.framework */; };
+		11076C0518AF039100A87B49 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0218AF039100A87B49 /* Parse.framework */; };
+		11076C0618AF039100A87B49 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0318AF039100A87B49 /* FacebookSDK.framework */; };
+		11076C0818AF03A900A87B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11076C0718AF03A900A87B49 /* Main.storyboard */; };
+		11076C1118AF04A300A87B49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0918AF04A200A87B49 /* AudioToolbox.framework */; };
+		11076C1218AF04A300A87B49 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0A18AF04A200A87B49 /* CFNetwork.framework */; };
+		11076C1318AF04A300A87B49 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0B18AF04A200A87B49 /* CoreLocation.framework */; };
+		11076C1418AF04A300A87B49 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0C18AF04A300A87B49 /* MobileCoreServices.framework */; };
+		11076C1518AF04A300A87B49 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0D18AF04A300A87B49 /* QuartzCore.framework */; };
+		11076C1618AF04A300A87B49 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0E18AF04A300A87B49 /* Security.framework */; };
+		11076C1718AF04A300A87B49 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0F18AF04A300A87B49 /* StoreKit.framework */; };
+		11076C1818AF04A300A87B49 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C1018AF04A300A87B49 /* SystemConfiguration.framework */; };
+		11076C1A18AF04AA00A87B49 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C1918AF04AA00A87B49 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,15 +56,27 @@
 		11076BDA18AF030E00A87B49 /* PennApps2014s-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PennApps2014s-Prefix.pch"; sourceTree = "<group>"; };
 		11076BDB18AF030E00A87B49 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11076BDC18AF030E00A87B49 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		11076BDF18AF030E00A87B49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		11076BE118AF030E00A87B49 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		11076BE218AF030E00A87B49 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		11076BE118AF030E00A87B49 /* MyItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyItemsViewController.h; sourceTree = "<group>"; };
+		11076BE218AF030E00A87B49 /* MyItemsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyItemsViewController.m; sourceTree = "<group>"; };
 		11076BE418AF030E00A87B49 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		11076BEA18AF030E00A87B49 /* PennApps2014sTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PennApps2014sTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11076BEB18AF030E00A87B49 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		11076BF318AF030E00A87B49 /* PennApps2014sTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PennApps2014sTests-Info.plist"; sourceTree = "<group>"; };
 		11076BF518AF030E00A87B49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11076BF718AF030E00A87B49 /* PennApps2014sTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PennApps2014sTests.m; sourceTree = "<group>"; };
+		11076C0118AF039100A87B49 /* VenmoAppSwitch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VenmoAppSwitch.framework; sourceTree = "<group>"; };
+		11076C0218AF039100A87B49 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		11076C0318AF039100A87B49 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		11076C0718AF03A900A87B49 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		11076C0918AF04A200A87B49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		11076C0A18AF04A200A87B49 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		11076C0B18AF04A200A87B49 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		11076C0C18AF04A300A87B49 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		11076C0D18AF04A300A87B49 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		11076C0E18AF04A300A87B49 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		11076C0F18AF04A300A87B49 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		11076C1018AF04A300A87B49 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		11076C1918AF04AA00A87B49 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +84,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11076C1A18AF04AA00A87B49 /* libz.dylib in Frameworks */,
+				11076C1118AF04A300A87B49 /* AudioToolbox.framework in Frameworks */,
+				11076C1218AF04A300A87B49 /* CFNetwork.framework in Frameworks */,
+				11076C1318AF04A300A87B49 /* CoreLocation.framework in Frameworks */,
+				11076C1418AF04A300A87B49 /* MobileCoreServices.framework in Frameworks */,
+				11076C1518AF04A300A87B49 /* QuartzCore.framework in Frameworks */,
+				11076C1618AF04A300A87B49 /* Security.framework in Frameworks */,
+				11076C1718AF04A300A87B49 /* StoreKit.framework in Frameworks */,
+				11076C1818AF04A300A87B49 /* SystemConfiguration.framework in Frameworks */,
+				11076C0418AF039100A87B49 /* VenmoAppSwitch.framework in Frameworks */,
 				11076BCF18AF030E00A87B49 /* CoreGraphics.framework in Frameworks */,
 				11076BD118AF030E00A87B49 /* UIKit.framework in Frameworks */,
 				11076BCD18AF030E00A87B49 /* Foundation.framework in Frameworks */,
+				11076C0518AF039100A87B49 /* Parse.framework in Frameworks */,
+				11076C0618AF039100A87B49 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +137,18 @@
 		11076BCB18AF030E00A87B49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11076C1918AF04AA00A87B49 /* libz.dylib */,
+				11076C0918AF04A200A87B49 /* AudioToolbox.framework */,
+				11076C0A18AF04A200A87B49 /* CFNetwork.framework */,
+				11076C0B18AF04A200A87B49 /* CoreLocation.framework */,
+				11076C0C18AF04A300A87B49 /* MobileCoreServices.framework */,
+				11076C0D18AF04A300A87B49 /* QuartzCore.framework */,
+				11076C0E18AF04A300A87B49 /* Security.framework */,
+				11076C0F18AF04A300A87B49 /* StoreKit.framework */,
+				11076C1018AF04A300A87B49 /* SystemConfiguration.framework */,
+				11076C0118AF039100A87B49 /* VenmoAppSwitch.framework */,
+				11076C0218AF039100A87B49 /* Parse.framework */,
+				11076C0318AF039100A87B49 /* FacebookSDK.framework */,
 				11076BCC18AF030E00A87B49 /* Foundation.framework */,
 				11076BCE18AF030E00A87B49 /* CoreGraphics.framework */,
 				11076BD018AF030E00A87B49 /* UIKit.framework */,
@@ -112,11 +160,11 @@
 		11076BD218AF030E00A87B49 /* PennApps2014s */ = {
 			isa = PBXGroup;
 			children = (
+				11076C0718AF03A900A87B49 /* Main.storyboard */,
 				11076BDB18AF030E00A87B49 /* AppDelegate.h */,
 				11076BDC18AF030E00A87B49 /* AppDelegate.m */,
-				11076BDE18AF030E00A87B49 /* Main.storyboard */,
-				11076BE118AF030E00A87B49 /* ViewController.h */,
-				11076BE218AF030E00A87B49 /* ViewController.m */,
+				11076BE118AF030E00A87B49 /* MyItemsViewController.h */,
+				11076BE218AF030E00A87B49 /* MyItemsViewController.m */,
 				11076BE418AF030E00A87B49 /* Images.xcassets */,
 				11076BD318AF030E00A87B49 /* Supporting Files */,
 			);
@@ -230,7 +278,7 @@
 			files = (
 				11076BE518AF030E00A87B49 /* Images.xcassets in Resources */,
 				11076BD718AF030E00A87B49 /* InfoPlist.strings in Resources */,
-				11076BE018AF030E00A87B49 /* Main.storyboard in Resources */,
+				11076C0818AF03A900A87B49 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11076BE318AF030E00A87B49 /* ViewController.m in Sources */,
+				11076BE318AF030E00A87B49 /* MyItemsViewController.m in Sources */,
 				11076BDD18AF030E00A87B49 /* AppDelegate.m in Sources */,
 				11076BD918AF030E00A87B49 /* main.m in Sources */,
 			);
@@ -280,14 +328,6 @@
 				11076BD618AF030E00A87B49 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		11076BDE18AF030E00A87B49 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				11076BDF18AF030E00A87B49 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		11076BF418AF030E00A87B49 /* InfoPlist.strings */ = {
@@ -378,10 +418,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = "./**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PennApps2014s/PennApps2014s-Prefix.pch";
 				INFOPLIST_FILE = "PennApps2014s/PennApps2014s-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "68BBE691-1D3E-43EE-AAFC-8F38559D779F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -391,10 +434,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = "./**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PennApps2014s/PennApps2014s-Prefix.pch";
 				INFOPLIST_FILE = "PennApps2014s/PennApps2014s-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "68BBE691-1D3E-43EE-AAFC-8F38559D779F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

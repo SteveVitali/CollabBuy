@@ -7,40 +7,98 @@
 //
 
 #import "AppDelegate.h"
+#import <FacebookSDK/FacebookSDK.h>
+#import <VenmoAppSwitch/Venmo.h>
+#import "MyItemsViewController.h"
+#import <Parse/Parse.h>
+#import "MyItemsViewController.h"
+
+static NSString *const kVenmoAppId      = @"1588";
+static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
+@synthesize window;
+@synthesize mainViewController;
+@synthesize venmoClient;
+
+#pragma mark - UIApplicationDelegate
+
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // Set up Parse
+    [Parse setApplicationId:@"aolPLxCwbIwcRFYOH6D0op1L4eUlS2kH52g8vO8X"
+                  clientKey:@"2to1maA9k7byQWyEtWLYyTjT9dNqTcumk9KcMHZu"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [PFFacebookUtils initializeFacebook];
+    
+    // Set up Vemmo
+    venmoClient = [VenmoClient clientWithAppId:kVenmoAppId secret:kVenmoAppSecret];
+    
+    // All of this code is here so the AppDelegate and the MyItemsViewController both share the venmoClient property
+    UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    self.mainViewController = (MyItemsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier: @"MyItemsViewController"];
+    self.mainViewController.venmoClient = venmoClient;
+    
+    NSMutableArray *controllers= [[NSMutableArray alloc] initWithArray:tabController.viewControllers];
+    [controllers setObject:self.mainViewController atIndexedSubscript:0];
+    tabController.viewControllers = controllers;
+    
     return YES;
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    if ([url.scheme isEqualToString:@"venmo1588"]) {
+        
+        NSLog(@"openURL: %@", url);
+        return [venmoClient openURL:url completionHandler:^(VenmoTransaction *transaction, NSError *error) {
+            if (transaction) {
+                NSString *success = (transaction.success ? @"Success" : @"Failure");
+                NSString *title = [@"Transaction " stringByAppendingString:success];
+                NSString *message = [@"payment_id: " stringByAppendingFormat:@"%@. %@ %@ %@ (%@) $%@ %@",
+                                     transaction.transactionID,
+                                     transaction.fromUserID,
+                                     transaction.typeStringPast,
+                                     transaction.toUserHandle,
+                                     transaction.toUserID,
+                                     transaction.amountString,
+                                     transaction.note];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message
+                                                                   delegate:nil cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil];
+                [alertView show];
+            } else { // error
+                NSLog(@"transaction error code: %lld", (long long)error.code);
+            }
+        }];
+    }
+    else if ([url.scheme isEqualToString:@"fb591285254288221"]) {
+        // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+        //BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+        // For Parse+FB integration:
+        NSLog(@"Facebook URL");
+        return [FBAppCall handleOpenURL:url
+                      sourceApplication:sourceApplication
+                            withSession:[PFFacebookUtils session]];
+    }
+    return YES;
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)applicationWillTerminate:(UIApplication *)application {
+    
+    [[PFFacebookUtils session] close];
 }
 
 @end
