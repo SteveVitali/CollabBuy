@@ -11,6 +11,7 @@
 #import <VenmoAppSwitch/Venmo.h>
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
+#import "CreateItemViewController.h"
 
 static NSString *const kVenmoAppId      = @"1588";
 static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
@@ -42,8 +43,25 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     
     //PFFile *file = (PFFile *)[[PFUser currentUser] objectForKey:@"profilePicture"];
    // [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageWithData:file.getData]]];
-
     
+}
+
+- (IBAction)didPressAddButton {
+    
+    [self performSegueWithIdentifier:@"createItem" sender:self];
+}
+
+- (void)itemCreatedWithName:(NSString *)name description:(NSString *)description {
+    
+    PFObject *item = [PFObject objectWithClassName:@"Item"];
+    
+    item[@"name"] = name;
+    item[@"description"] = description;
+    item[@"user"] = [PFUser currentUser];
+    
+    [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self executeQueryAndReloadTable];
+    }];
 }
 
 - (PFQuery *)queryForTable {
@@ -58,12 +76,15 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
 
 - (void)executeQueryAndReloadTable {
     
+    NSLog(@"this ran");
     [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         self.items = objects;
         [self.tableView reloadData];
     }];
 }
+
+
 
 - (void)initializeFacebookLogin {
     
@@ -298,16 +319,19 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
  }
  */
 
-/*
+
  #pragma mark - Navigation
  
- // In a story board-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+
+     if ([segue.identifier isEqualToString:@"createItem"]) {
+         
+         UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+         CreateItemViewController *controller = (CreateItemViewController *)navController.viewControllers[0];
+         controller.delegate = self;
+     }
  }
- 
- */
+
 
 @end

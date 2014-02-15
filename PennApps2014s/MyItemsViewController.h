@@ -10,8 +10,9 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <VenmoAppSwitch/Venmo.h>
 #import "ListTableViewController.h"
+#import "CreateItemViewController.h"
 
-@interface MyItemsViewController : ListTableViewController <NSURLConnectionDelegate>
+@interface MyItemsViewController : ListTableViewController <NSURLConnectionDelegate, CreateItemViewControllerDelegate>
 
 // Facebook properties
 @property NSMutableData *imageData;
@@ -19,5 +20,9 @@
 // Venmo properties
 @property (strong, nonatomic) VenmoClient *venmoClient;
 @property (strong, nonatomic) VenmoTransaction *venmoTransaction;
+
+- (IBAction)didPressAddButton;
+
+- (void)itemCreatedWithName:(NSString *)name description:(NSString *)description;
 
 @end

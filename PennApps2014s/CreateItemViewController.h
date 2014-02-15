@@ -8,6 +8,24 @@
 
 #import "ListTableViewController.h"
 
+@protocol CreateItemViewControllerDelegate;
+
 @interface CreateItemViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextField *descriptionField;
+
+- (IBAction)didPressDone:(id)sender;
+
+@property (weak) id<CreateItemViewControllerDelegate> delegate;
+
+@end
+
+@protocol CreateItemViewControllerDelegate <NSObject>
+
+@required
+
+- (void)itemCreatedWithName:(NSString *)name description:(NSString *)description;
 
 @end
