@@ -6,8 +6,14 @@
 //  Copyright (c) 2014 Steve John Vitali. All rights reserved.
 //
 
+#import <Parse/Parse.h>
+
 @interface ClaimItemsViewController : UITableViewController
 
 @property NSArray *claimedItems;
+@property PFObject *recipient;
+
+- (IBAction)didPressCancel:(id)sender;
+- (IBAction)didPressSave:(id)sender;
 
 @end

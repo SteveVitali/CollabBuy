@@ -12,8 +12,9 @@
 #import "ListTableViewController.h"
 #import "CreateItemViewController.h"
 #import "EditItemViewController.h"
+#import "VenmoHandleViewController.h"
 
-@interface MyItemsViewController : ListTableViewController <NSURLConnectionDelegate, CreateItemViewControllerDelegate, EditItemViewControllerDelegate>
+@interface MyItemsViewController : ListTableViewController <NSURLConnectionDelegate, CreateItemViewControllerDelegate, EditItemViewControllerDelegate, VenmoHandleViewControllerDelegate>
 
 //
 @property NSInteger selectedItemIndex;
@@ -30,5 +31,7 @@
 - (void)itemCreatedWithName:(NSString *)name description:(NSString *)description;
 
 - (void)itemEditedWithName:(NSString *)name description:(NSString *)description objectID:(NSString *)objectID;
+
+- (void)setVenmoHandle:(NSString *)handle;
 
 @end

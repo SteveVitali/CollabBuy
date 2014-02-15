@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ClaimItemsTableViewCell : UITableViewCell
+@interface ClaimItemsTableViewCell : UITableViewCell <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *price;
 
 - (IBAction)didFinishTypingPrice:(id)sender;
++ (NSString *)formatTextAsCurrency:(NSString *)text;
 
 @end

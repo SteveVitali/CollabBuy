@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <VenmoAppSwitch/Venmo.h>
 #import "MyItemsViewController.h"
+#import "InvoiceViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property MyItemsViewController *mainViewController;
+//@property MyItemsViewController *mainViewController;
+@property InvoiceViewController *invoiceViewController;
 
 @property VenmoClient *venmoClient;
 

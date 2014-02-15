@@ -31,6 +31,79 @@
 	// Do any additional setup after loading the view.
 }
 
+- (IBAction)didPressCancel:(id)sender{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)didPressSave:(id)sender {
+    
+    NSLog(@"Sending invoice");
+    
+    NSArray *allCells = [self getAllTableViewCells];
+    NSMutableArray *priceStrings = [[NSMutableArray alloc] init];
+    NSMutableArray *priceNumbers = [[NSMutableArray alloc] init];
+    
+    for (ClaimItemsTableViewCell *cell in allCells) {
+        
+        cell.price.text = [ClaimItemsTableViewCell formatTextAsCurrency:cell.price.text];
+        [priceStrings addObject:cell.price.text];
+    }
+    for (NSString *price in priceStrings) {
+        
+        [priceNumbers addObject:[self getNumberFromPriceString:price]];
+        //NSLog(@"Price: %f", [self getNumberFromPriceString:price].floatValue);
+    }
+    
+    [self submitInvoiceToUser:self.recipient withItems:self.claimedItems andPrices:priceNumbers];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)submitInvoiceToUser:(PFObject *)recipient withItems:(NSArray *)items andPrices:(NSArray *)prices {
+    
+    PFObject *invoice = [PFObject objectWithClassName:@"Invoice"];
+    
+    invoice[@"sender"]    = [PFUser currentUser];
+    invoice[@"recipient"] = recipient;
+    invoice[@"items"]     = items;
+    invoice[@"prices"]    = prices;
+    
+    [invoice saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+        NSLog(@"aw yeah, invoice sent");
+    }];
+}
+
+- (NSArray *)getAllTableViewCells {
+    
+    NSMutableArray *cells = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<[self.claimedItems count]; i++) {
+        
+        ClaimItemsTableViewCell *cell = (ClaimItemsTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        
+        [cells addObject:cell];
+    }
+    
+    return [[NSArray alloc] initWithArray:cells];
+}
+
+// Method assumes the field has been formatted w/ the dollar sign
+- (NSNumber *)getNumberFromPriceString:(NSString *)priceString {
+    
+    NSNumber *priceNumber;
+    
+    // Remove dollar sign
+    priceString = [priceString stringByReplacingOccurrencesOfString:@"$" withString:@""];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    priceNumber = [formatter numberFromString:priceString];
+    
+    return priceNumber;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -49,7 +122,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ClaimItemsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     if (cell == nil) {
         cell = [[ClaimItemsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -62,6 +135,9 @@
     cell.detailTextLabel.text = [object valueForKey:@"desc"];
     NSLog(@"%@",[object valueForKey:@"desc"]);
     
+    cell.price.delegate = cell;
+    cell.price.keyboardType = UIKeyboardTypeDecimalPad;
+    
     return cell;
 }
 
@@ -69,7 +145,6 @@
 
     // Unhighlight Cell - Stupid Cocoa Shit makes cell grey
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
 }
 
 # pragma mark - memory bullshit

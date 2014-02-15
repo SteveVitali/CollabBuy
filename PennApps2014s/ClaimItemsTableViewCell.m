@@ -15,7 +15,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        
     }
     return self;
 }
@@ -27,7 +26,28 @@
     // Configure the view for the selected state
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    [textField selectAll:self];
+}
+
 - (IBAction)didFinishTypingPrice:(id)sender {
+    
+//    NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
+//    [currencyFormatter setLocale:[NSLocale currentLocale]];
+//    [currencyFormatter setMaximumFractionDigits:2];
+//    [currencyFormatter setMinimumFractionDigits:2];
+//    [currencyFormatter setAlwaysShowsDecimalSeparator:YES];
+//    [currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+//    
+//    NSNumber *someAmount = [NSNumber numberWithDouble:[[_price.text stringByTrimmingCharactersInSet: [NSCharacterSet symbolCharacterSet]] doubleValue]];
+//    NSString *string = [currencyFormatter stringFromNumber:someAmount];
+    
+    _price.text = [ClaimItemsTableViewCell formatTextAsCurrency:_price.text];
+}
+
++ (NSString *)formatTextAsCurrency:(NSString *)text {
+    
     NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
     [currencyFormatter setLocale:[NSLocale currentLocale]];
     [currencyFormatter setMaximumFractionDigits:2];
@@ -35,10 +55,10 @@
     [currencyFormatter setAlwaysShowsDecimalSeparator:YES];
     [currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     
-    NSNumber *someAmount = [NSNumber numberWithDouble:[[_price.text stringByTrimmingCharactersInSet: [NSCharacterSet symbolCharacterSet]] doubleValue]];
-    NSString *string = [currencyFormatter stringFromNumber:someAmount];
+    NSNumber *someAmount = [NSNumber numberWithDouble:[[text stringByTrimmingCharactersInSet: [NSCharacterSet symbolCharacterSet]] doubleValue]];
+    NSString *formattedString = [currencyFormatter stringFromNumber:someAmount];
     
-    _price.text = string;
+    return formattedString;
 }
 
 - (IBAction)didPressOutsideOfPrice:(id)sender {

@@ -42,17 +42,26 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
         [self executeQueryAndReloadTable];
     }
     
-    if ([[PFUser currentUser] valueForKey:@"profilePicture"])
-    {
-        NSLog(@"key exists");
+    if ([[PFUser currentUser] valueForKey:@"venmoHandle"]) {
+        NSLog(@"your venmo handle exists");
     }
     else {
-        NSLog(@"nope");
+        [self performSegueWithIdentifier:@"venmoHandle" sender:self];
     }
     
     //PFFile *file = (PFFile *)[[PFUser currentUser] objectForKey:@"profilePicture"];
    // [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageWithData:file.getData]]];
     
+}
+
+// VenmoHandlerViewControllerDelegate method
+
+- (void)setVenmoHandle:(NSString *)handle {
+    
+    [[PFUser currentUser] setValue:handle forKey:@"venmoHandle"];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"venmo handle saved!");
+    }];
 }
 
 - (void)executeQueryAndReloadTable {
@@ -378,6 +387,12 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
          controller.objectID = ((PFObject *)[self.items objectAtIndex:self.selectedItemIndex]).objectId;
          controller.name = [((PFObject *)[self.items objectAtIndex:self.selectedItemIndex]) valueForKey:@"name"];
          controller.desc = [((PFObject *)[self.items objectAtIndex:self.selectedItemIndex]) valueForKey:@"desc"];
+     }
+     else if ([segue.identifier isEqualToString:@"venmoHandle"]) {
+         
+         UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+         VenmoHandleViewController *controller = (VenmoHandleViewController *)navController.viewControllers[0];
+         controller.delegate = self;
      }
  }
 

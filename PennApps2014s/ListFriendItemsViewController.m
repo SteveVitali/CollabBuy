@@ -114,8 +114,7 @@
         [_selected addObject:obj];
         
         // select the cell (checkmark)
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType
-            = UITableViewCellAccessoryCheckmark;
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         
     } else
         // if it was already selected
@@ -125,10 +124,8 @@
         [_selected removeObjectAtIndex:index];
         
         // deselect the cell (no checkmark)
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType
-            = UITableViewCellAccessoryNone;
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     }
-    
     
 }
 
@@ -139,7 +136,10 @@
         UINavigationController *navController = [segue destinationViewController];
         NSLog(@"nav: %@", navController.class);
         ClaimItemsViewController *destinationController = (ClaimItemsViewController *)[navController viewControllers][0];
+        
         destinationController.claimedItems = [NSArray arrayWithArray:_selected];
+        destinationController.recipient    = self.friendObject;
+        
         NSLog(@"dest: %@", destinationController.class);
         //destinationController.delegate = self;
     }

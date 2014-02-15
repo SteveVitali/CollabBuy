@@ -12,14 +12,13 @@
 #import "MyItemsViewController.h"
 #import <Parse/Parse.h>
 #import "MyItemsViewController.h"
-
-static NSString *const kVenmoAppId      = @"1588";
-static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
+#import "InvoiceViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window;
-@synthesize mainViewController;
+//@synthesize mainViewController;
+@synthesize invoiceViewController;
 @synthesize venmoClient;
 
 #pragma mark - UIApplicationDelegate
@@ -34,23 +33,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     [PFFacebookUtils initializeFacebook];
-    
-    // Set up Vemmo
-    venmoClient = [VenmoClient clientWithAppId:kVenmoAppId secret:kVenmoAppSecret];
-    
-    
-    // All of this code is here so the AppDelegate and the MyItemsViewController both share the venmoClient property
-    UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    self.mainViewController = (MyItemsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier: @"MyItemsViewController"];
-    self.mainViewController.venmoClient = venmoClient;
-    
-    UINavigationController *navController = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier: @"MyItemsNavigationController"];
-    
-    NSMutableArray *controllers= [[NSMutableArray alloc] initWithArray:tabController.viewControllers];
-    [controllers setObject:navController atIndexedSubscript:0];
-    tabController.viewControllers = controllers;
     
     return YES;
 }

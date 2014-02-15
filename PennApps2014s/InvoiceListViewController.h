@@ -10,4 +10,10 @@
 
 @interface InvoiceListViewController : QueryTableViewController
 
+@property NSArray *invoices;
+@property NSInteger selectedInvoiceIndex;
+
+
+
 @end
+
