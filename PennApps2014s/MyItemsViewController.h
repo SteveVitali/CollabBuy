@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <VenmoAppSwitch/Venmo.h>
+#import "ListTableViewController.h"
 
-@interface MyItemsViewController : UIViewController <NSURLConnectionDelegate>
+@interface MyItemsViewController : ListTableViewController <NSURLConnectionDelegate>
 
 // Facebook properties
 @property NSMutableData *imageData;

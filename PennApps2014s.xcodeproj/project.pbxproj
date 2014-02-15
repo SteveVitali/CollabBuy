@@ -33,6 +33,17 @@
 		11076C1718AF04A300A87B49 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C0F18AF04A300A87B49 /* StoreKit.framework */; };
 		11076C1818AF04A300A87B49 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C1018AF04A300A87B49 /* SystemConfiguration.framework */; };
 		11076C1A18AF04AA00A87B49 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11076C1918AF04AA00A87B49 /* libz.dylib */; };
+		11076C2018AF06E400A87B49 /* QueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C1F18AF06E400A87B49 /* QueryTableViewController.m */; };
+		11076C2418AF071200A87B49 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C2318AF071200A87B49 /* SettingsViewController.m */; };
+		11076C2718AF07BD00A87B49 /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C2618AF07BD00A87B49 /* FriendsTableViewController.m */; };
+		11076C2A18AF07C800A87B49 /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C2918AF07C800A87B49 /* ListTableViewController.m */; };
+		11076C2E18AF083600A87B49 /* ListFriendItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C2D18AF083600A87B49 /* ListFriendItemsViewController.m */; };
+		11076C3118AF08F000A87B49 /* CreateItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3018AF08F000A87B49 /* CreateItemViewController.m */; };
+		11076C3418AF090300A87B49 /* ClaimItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3318AF090300A87B49 /* ClaimItemsViewController.m */; };
+		11076C3718AF091100A87B49 /* InvoiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3618AF091100A87B49 /* InvoiceListViewController.m */; };
+		11076C3A18AF091D00A87B49 /* InvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3918AF091D00A87B49 /* InvoiceViewController.m */; };
+		11076C3D18AF092700A87B49 /* EditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3C18AF092700A87B49 /* EditItemViewController.m */; };
+		11076C4018AF094000A87B49 /* FindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3F18AF094000A87B49 /* FindFriendsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +88,28 @@
 		11076C0F18AF04A300A87B49 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		11076C1018AF04A300A87B49 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		11076C1918AF04AA00A87B49 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		11076C1E18AF06E400A87B49 /* QueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryTableViewController.h; sourceTree = "<group>"; };
+		11076C1F18AF06E400A87B49 /* QueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryTableViewController.m; sourceTree = "<group>"; };
+		11076C2218AF071200A87B49 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		11076C2318AF071200A87B49 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		11076C2518AF07BD00A87B49 /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
+		11076C2618AF07BD00A87B49 /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
+		11076C2818AF07C800A87B49 /* ListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewController.h; sourceTree = "<group>"; };
+		11076C2918AF07C800A87B49 /* ListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewController.m; sourceTree = "<group>"; };
+		11076C2C18AF083600A87B49 /* ListFriendItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListFriendItemsViewController.h; sourceTree = "<group>"; };
+		11076C2D18AF083600A87B49 /* ListFriendItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListFriendItemsViewController.m; sourceTree = "<group>"; };
+		11076C2F18AF08F000A87B49 /* CreateItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateItemViewController.h; sourceTree = "<group>"; };
+		11076C3018AF08F000A87B49 /* CreateItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateItemViewController.m; sourceTree = "<group>"; };
+		11076C3218AF090300A87B49 /* ClaimItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimItemsViewController.h; sourceTree = "<group>"; };
+		11076C3318AF090300A87B49 /* ClaimItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimItemsViewController.m; sourceTree = "<group>"; };
+		11076C3518AF091100A87B49 /* InvoiceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoiceListViewController.h; sourceTree = "<group>"; };
+		11076C3618AF091100A87B49 /* InvoiceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoiceListViewController.m; sourceTree = "<group>"; };
+		11076C3818AF091D00A87B49 /* InvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoiceViewController.h; sourceTree = "<group>"; };
+		11076C3918AF091D00A87B49 /* InvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoiceViewController.m; sourceTree = "<group>"; };
+		11076C3B18AF092700A87B49 /* EditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditItemViewController.h; sourceTree = "<group>"; };
+		11076C3C18AF092700A87B49 /* EditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditItemViewController.m; sourceTree = "<group>"; };
+		11076C3E18AF094000A87B49 /* FindFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFriendsViewController.h; sourceTree = "<group>"; };
+		11076C3F18AF094000A87B49 /* FindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,11 +193,10 @@
 		11076BD218AF030E00A87B49 /* PennApps2014s */ = {
 			isa = PBXGroup;
 			children = (
-				11076C0718AF03A900A87B49 /* Main.storyboard */,
+				11076C1D18AF06B800A87B49 /* Views */,
+				11076C1B18AF06AF00A87B49 /* Controllers */,
 				11076BDB18AF030E00A87B49 /* AppDelegate.h */,
 				11076BDC18AF030E00A87B49 /* AppDelegate.m */,
-				11076BE118AF030E00A87B49 /* MyItemsViewController.h */,
-				11076BE218AF030E00A87B49 /* MyItemsViewController.m */,
 				11076BE418AF030E00A87B49 /* Images.xcassets */,
 				11076BD318AF030E00A87B49 /* Supporting Files */,
 			);
@@ -198,6 +230,61 @@
 				11076BF418AF030E00A87B49 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		11076C1B18AF06AF00A87B49 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				11076C2118AF06E700A87B49 /* QueryTableViewControllers */,
+				11076C2218AF071200A87B49 /* SettingsViewController.h */,
+				11076C2318AF071200A87B49 /* SettingsViewController.m */,
+				11076C2F18AF08F000A87B49 /* CreateItemViewController.h */,
+				11076C3018AF08F000A87B49 /* CreateItemViewController.m */,
+				11076C3218AF090300A87B49 /* ClaimItemsViewController.h */,
+				11076C3318AF090300A87B49 /* ClaimItemsViewController.m */,
+				11076C3818AF091D00A87B49 /* InvoiceViewController.h */,
+				11076C3918AF091D00A87B49 /* InvoiceViewController.m */,
+				11076C3B18AF092700A87B49 /* EditItemViewController.h */,
+				11076C3C18AF092700A87B49 /* EditItemViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		11076C1D18AF06B800A87B49 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11076C0718AF03A900A87B49 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		11076C2118AF06E700A87B49 /* QueryTableViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11076C2B18AF080D00A87B49 /* ListTableViewControllers */,
+				11076C1E18AF06E400A87B49 /* QueryTableViewController.h */,
+				11076C1F18AF06E400A87B49 /* QueryTableViewController.m */,
+				11076C3518AF091100A87B49 /* InvoiceListViewController.h */,
+				11076C3618AF091100A87B49 /* InvoiceListViewController.m */,
+				11076C3E18AF094000A87B49 /* FindFriendsViewController.h */,
+				11076C3F18AF094000A87B49 /* FindFriendsViewController.m */,
+			);
+			name = QueryTableViewControllers;
+			sourceTree = "<group>";
+		};
+		11076C2B18AF080D00A87B49 /* ListTableViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11076BE118AF030E00A87B49 /* MyItemsViewController.h */,
+				11076BE218AF030E00A87B49 /* MyItemsViewController.m */,
+				11076C2518AF07BD00A87B49 /* FriendsTableViewController.h */,
+				11076C2618AF07BD00A87B49 /* FriendsTableViewController.m */,
+				11076C2818AF07C800A87B49 /* ListTableViewController.h */,
+				11076C2918AF07C800A87B49 /* ListTableViewController.m */,
+				11076C2C18AF083600A87B49 /* ListFriendItemsViewController.h */,
+				11076C2D18AF083600A87B49 /* ListFriendItemsViewController.m */,
+			);
+			name = ListTableViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,7 +386,18 @@
 			files = (
 				11076BE318AF030E00A87B49 /* MyItemsViewController.m in Sources */,
 				11076BDD18AF030E00A87B49 /* AppDelegate.m in Sources */,
+				11076C3A18AF091D00A87B49 /* InvoiceViewController.m in Sources */,
+				11076C2418AF071200A87B49 /* SettingsViewController.m in Sources */,
+				11076C3718AF091100A87B49 /* InvoiceListViewController.m in Sources */,
+				11076C3D18AF092700A87B49 /* EditItemViewController.m in Sources */,
+				11076C2A18AF07C800A87B49 /* ListTableViewController.m in Sources */,
+				11076C4018AF094000A87B49 /* FindFriendsViewController.m in Sources */,
+				11076C3118AF08F000A87B49 /* CreateItemViewController.m in Sources */,
+				11076C2718AF07BD00A87B49 /* FriendsTableViewController.m in Sources */,
+				11076C3418AF090300A87B49 /* ClaimItemsViewController.m in Sources */,
+				11076C2018AF06E400A87B49 /* QueryTableViewController.m in Sources */,
 				11076BD918AF030E00A87B49 /* main.m in Sources */,
+				11076C2E18AF083600A87B49 /* ListFriendItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
