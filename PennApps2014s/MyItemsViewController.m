@@ -12,6 +12,7 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "CreateItemViewController.h"
+#import "EditItemViewController.h"
 
 static NSString *const kVenmoAppId      = @"1588";
 static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
@@ -56,12 +57,30 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     PFObject *item = [PFObject objectWithClassName:@"Item"];
     
     item[@"name"] = name;
-    item[@"description"] = description;
+    item[@"desc"] = description;
     item[@"user"] = [PFUser currentUser];
     
     [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [self executeQueryAndReloadTable];
     }];
+}
+
+- (void)itemEditedWithName:(NSString *)name description:(NSString *)description objectID:(NSString *)objectID {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
+    
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:objectID block:^(PFObject *item, NSError *error) {
+        
+        // Now let's update it with some new data. In this case, only cheatMode and score
+        // will get sent to the cloud. playerName hasn't changed.
+        item[@"name"]        = name;
+        item[@"desc"] = description;
+        [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [self executeQueryAndReloadTable];
+        }];
+    }];
+    
 }
 
 - (PFQuery *)queryForTable {
@@ -80,11 +99,10 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         self.items = objects;
+        
         [self.tableView reloadData];
     }];
 }
-
-
 
 - (void)initializeFacebookLogin {
     
@@ -265,8 +283,8 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
   
     static NSString *CellIdentifier = @"Cell";
     
-   // UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    UITableViewCell *cell;
+   UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+  //  UITableViewCell *cell;
     // Configure the cell...
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -276,8 +294,16 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     // Configure the cell...
     PFObject *object = (PFObject *)[self.items objectAtIndex:indexPath.row];
     cell.textLabel.text = [object valueForKey:@"name"];
-    
+    cell.detailTextLabel.text = [object valueForKey:@"desc"];
+    NSLog(@"%@", cell.detailTextLabel.text);
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.selectedItemIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"editItem" sender:self];
 }
 
 /*
@@ -330,6 +356,16 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
          UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
          CreateItemViewController *controller = (CreateItemViewController *)navController.viewControllers[0];
          controller.delegate = self;
+     }
+     else if ([segue.identifier isEqualToString:@"editItem"]) {
+         
+         UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+         EditItemViewController *controller = (EditItemViewController *)navController.viewControllers[0];
+         controller.delegate = self;
+         
+         controller.objectID = ((PFObject *)[self.items objectAtIndex:self.selectedItemIndex]).objectId;
+         controller.name = [((PFObject *)[self.items objectAtIndex:self.selectedItemIndex]) valueForKey:@"name"];
+         controller.desc = [((PFObject *)[self.items objectAtIndex:self.selectedItemIndex]) valueForKey:@"desc"];
      }
  }
 
