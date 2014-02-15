@@ -20,7 +20,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _facebookPictures = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -63,12 +63,28 @@
             
             NSLog(@"%@", friendUsers);
             _facebookFriends = friendUsers;
+            NSMutableArray *tempPictureData = [[NSMutableArray alloc] initWithCapacity:[_facebookFriends count]];
             
             for (PFUser *user in _facebookFriends) {
                 
                 PFFile *imageFile = (PFFile *)[user valueForKey:@"profilePicture"];
-                [self.facebookPictures addObject:[UIImage imageWithData:imageFile.getData]];
+                
+                [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error) {
+                        // NSLog(@"Data received. Data: %@", data);
+                        UIImage *profilePicture = [UIImage imageWithData:data];
+                        [tempPictureData addObject:profilePicture];
+                    } else {
+                        NSLog(@"There was an error getting the data.");
+                    }
+                }];
+                
+                // idek wat wat wat wat kkk
+                //[self.facebookPictures addObject:[UIImage imageWithData:[imageFile getData]]];
             }
+            
+            _facebookPictures = (NSArray *)tempPictureData;
+            
             [self.tableView reloadData];
         }
     }];
