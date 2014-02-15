@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *price;
 
+- (IBAction)didFinishTypingPrice:(id)sender;
+
 @end

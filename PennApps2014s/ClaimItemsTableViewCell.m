@@ -27,4 +27,22 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)didFinishTypingPrice:(id)sender {
+    NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
+    [currencyFormatter setLocale:[NSLocale currentLocale]];
+    [currencyFormatter setMaximumFractionDigits:2];
+    [currencyFormatter setMinimumFractionDigits:2];
+    [currencyFormatter setAlwaysShowsDecimalSeparator:YES];
+    [currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    
+    NSNumber *someAmount = [NSNumber numberWithDouble:[[_price.text stringByTrimmingCharactersInSet: [NSCharacterSet symbolCharacterSet]] doubleValue]];
+    NSString *string = [currencyFormatter stringFromNumber:someAmount];
+    
+    _price.text = string;
+}
+
+- (IBAction)didPressOutsideOfPrice:(id)sender {
+    //[_price resignFirstResponder];
+}
+
 @end
