@@ -11,4 +11,6 @@
 
 @interface FriendsTableViewController : ListTableViewController
 
+@property NSArray *facebookFriends;
+
 @end

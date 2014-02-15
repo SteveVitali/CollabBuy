@@ -10,4 +10,6 @@
 
 @interface FindFriendsViewController : QueryTableViewController
 
+@property NSArray *facebookFriends;
+
 @end
