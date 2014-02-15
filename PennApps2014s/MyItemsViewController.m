@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <VenmoAppSwitch/Venmo.h>
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 static NSString *const kVenmoAppId      = @"1588";
 static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";

@@ -28,8 +28,8 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Set up Parse
-    [Parse setApplicationId:@"aolPLxCwbIwcRFYOH6D0op1L4eUlS2kH52g8vO8X"
-                  clientKey:@"2to1maA9k7byQWyEtWLYyTjT9dNqTcumk9KcMHZu"];
+    [Parse setApplicationId:@"VJlYaLCm8es4QQwNqXjShUEwIO4AopjKqOaw5UN6"
+                  clientKey:@"kd1fW1ctsBT3fYKONKfX0F6lRDQ7oNWlowt2PUFB"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
@@ -38,6 +38,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Set up Vemmo
     venmoClient = [VenmoClient clientWithAppId:kVenmoAppId secret:kVenmoAppSecret];
     
+    
     // All of this code is here so the AppDelegate and the MyItemsViewController both share the venmoClient property
     UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
     
@@ -45,8 +46,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.mainViewController = (MyItemsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier: @"MyItemsViewController"];
     self.mainViewController.venmoClient = venmoClient;
     
+    UINavigationController *navController = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier: @"MyItemsNavigationController"];
+    
     NSMutableArray *controllers= [[NSMutableArray alloc] initWithArray:tabController.viewControllers];
-    [controllers setObject:self.mainViewController atIndexedSubscript:0];
+    [controllers setObject:navController atIndexedSubscript:0];
     tabController.viewControllers = controllers;
     
     return YES;
