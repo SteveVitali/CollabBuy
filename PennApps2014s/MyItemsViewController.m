@@ -42,6 +42,14 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
         [self executeQueryAndReloadTable];
     }
     
+    if ([[PFUser currentUser] valueForKey:@"profilePicture"])
+    {
+        NSLog(@"key exists");
+    }
+    else {
+        NSLog(@"nope");
+    }
+    
     //PFFile *file = (PFFile *)[[PFUser currentUser] objectForKey:@"profilePicture"];
    // [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageWithData:file.getData]]];
     
@@ -55,6 +63,8 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
         self.items = objects;
         
         [self.tableView reloadData];
+        
+        ;
     }];
 }
 
@@ -235,6 +245,7 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     [photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         [[PFUser currentUser] setValue:photoFile forKey:@"profilePicture"];
+        NSLog(@"this runs");
     }];
     
     //[self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageWithData:self.imageData]]];

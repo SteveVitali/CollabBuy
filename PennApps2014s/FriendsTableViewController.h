@@ -15,4 +15,6 @@
 @property NSMutableArray *facebookPictures;
 @property NSInteger selectedFriendIndex;
 
+@property NSMutableData *imageData;
+
 @end

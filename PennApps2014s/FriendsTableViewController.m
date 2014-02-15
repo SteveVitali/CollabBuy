@@ -8,6 +8,7 @@
 
 #import "FriendsTableViewController.h"
 #import "ListFriendItemsViewController.h"
+#import "FriendTableViewCell.h"
 
 @interface FriendsTableViewController ()
 
@@ -63,22 +64,14 @@
             NSLog(@"%@", friendUsers);
             _facebookFriends = friendUsers;
             
-            self.facebookPictures = [[NSMutableArray alloc] init];
-            for (PFUser *friend in _facebookFriends) {
+            for (PFUser *user in _facebookFriends) {
                 
-                [self.facebookPictures addObject:[self getProfilePictureFromFriend:friend]];
+                PFFile *imageFile = (PFFile *)[user valueForKey:@"profilePicture"];
+                [self.facebookPictures addObject:[UIImage imageWithData:imageFile.getData]];
             }
-            
             [self.tableView reloadData];
         }
     }];
-}
-
-- (UIImage *)getProfilePictureFromFriend:(PFUser *)friend {
-    
-    UIImage *image;
-    
-    return image;
 }
 
 #pragma mark - Table view data source
@@ -99,16 +92,18 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    FriendTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[FriendTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
     PFObject *object = (PFObject *)[self.facebookFriends objectAtIndex:indexPath.row];
-    cell.textLabel.text = [object valueForKey:@"name"];
+    cell.nameLabel.text = [object valueForKey:@"name"];
+    
+    cell.imageView.image = [self.facebookPictures objectAtIndex:indexPath.row];
     
     return cell;
 }

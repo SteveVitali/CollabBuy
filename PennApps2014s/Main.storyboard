@@ -250,8 +250,8 @@
                                             <rect key="frame" x="20" y="5" width="43" height="43"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXD-nf-poo">
-                                            <rect key="frame" x="122" y="16" width="46" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gej-T8-gxe">
+                                            <rect key="frame" x="71" y="16" width="196" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
@@ -260,7 +260,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imageView" destination="hA5-v9-sM6" id="H7A-Qv-ASw"/>
-                                    <outlet property="nameLabel" destination="hXD-nf-poo" id="SDw-MM-zSA"/>
+                                    <outlet property="nameLabel" destination="Gej-T8-gxe" id="YLp-E6-yy5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
