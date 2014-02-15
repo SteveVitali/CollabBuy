@@ -12,5 +12,7 @@
 @interface FriendsTableViewController : ListTableViewController
 
 @property NSArray *facebookFriends;
+@property NSMutableArray *facebookPictures;
+@property NSInteger selectedFriendIndex;
 
 @end

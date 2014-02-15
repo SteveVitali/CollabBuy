@@ -47,6 +47,18 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     
 }
 
+- (void)executeQueryAndReloadTable {
+    
+    NSLog(@"this ran");
+    [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        self.items = objects;
+        
+        [self.tableView reloadData];
+    }];
+}
+
+
 - (IBAction)didPressAddButton {
     
     [self performSegueWithIdentifier:@"createItem" sender:self];
@@ -91,17 +103,6 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     [userItemsQuery orderByDescending:@"createdAt"];
     
     return userItemsQuery;
-}
-
-- (void)executeQueryAndReloadTable {
-    
-    NSLog(@"this ran");
-    [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        self.items = objects;
-        
-        [self.tableView reloadData];
-    }];
 }
 
 - (void)initializeFacebookLogin {

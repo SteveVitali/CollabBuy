@@ -44,7 +44,7 @@
 		11076C3D18AF092700A87B49 /* EditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3C18AF092700A87B49 /* EditItemViewController.m */; };
 		11076C4018AF094000A87B49 /* FindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3F18AF094000A87B49 /* FindFriendsViewController.m */; };
 		111E0CE718AF1F72004BBF75 /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E0CE618AF1F72004BBF75 /* ListTableViewController.m */; };
-		1196BD4C18AF54FF0089EB9C /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1196BD4B18AF54FF0089EB9C /* ItemTableViewCell.m */; };
+		1196BD4C18AF54FF0089EB9C /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,8 +111,8 @@
 		11076C3F18AF094000A87B49 /* FindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsViewController.m; sourceTree = "<group>"; };
 		111E0CE518AF1F72004BBF75 /* ListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewController.h; sourceTree = "<group>"; };
 		111E0CE618AF1F72004BBF75 /* ListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewController.m; sourceTree = "<group>"; };
-		1196BD4A18AF54FF0089EB9C /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
-		1196BD4B18AF54FF0089EB9C /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
+		1196BD4A18AF54FF0089EB9C /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
+		1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,8 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				11076C0718AF03A900A87B49 /* Main.storyboard */,
-				1196BD4A18AF54FF0089EB9C /* ItemTableViewCell.h */,
-				1196BD4B18AF54FF0089EB9C /* ItemTableViewCell.m */,
+				1196BD4A18AF54FF0089EB9C /* FriendTableViewCell.h */,
+				1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -401,7 +401,7 @@
 				11076C2718AF07BD00A87B49 /* FriendsTableViewController.m in Sources */,
 				11076C3418AF090300A87B49 /* ClaimItemsViewController.m in Sources */,
 				11076C2018AF06E400A87B49 /* QueryTableViewController.m in Sources */,
-				1196BD4C18AF54FF0089EB9C /* ItemTableViewCell.m in Sources */,
+				1196BD4C18AF54FF0089EB9C /* FriendTableViewCell.m in Sources */,
 				11076BD918AF030E00A87B49 /* main.m in Sources */,
 				11076C2E18AF083600A87B49 /* ListFriendItemsViewController.m in Sources */,
 			);

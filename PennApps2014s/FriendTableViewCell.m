@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Steve John Vitali. All rights reserved.
 //
 
-#import "ItemTableViewCell.h"
+#import "FriendTableViewCell.h"
 
-@implementation ItemTableViewCell
+@implementation FriendTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

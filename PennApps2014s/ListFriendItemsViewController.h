@@ -10,4 +10,8 @@
 
 @interface ListFriendItemsViewController : ListTableViewController
 
+@property PFObject *friendObject;
+
+- (void)executeQueryAndReloadTable;
+
 @end

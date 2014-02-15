@@ -7,6 +7,7 @@
 //
 
 #import "FriendsTableViewController.h"
+#import "ListFriendItemsViewController.h"
 
 @interface FriendsTableViewController ()
 
@@ -61,20 +62,24 @@
             
             NSLog(@"%@", friendUsers);
             _facebookFriends = friendUsers;
+            
+            self.facebookPictures = [[NSMutableArray alloc] init];
+            for (PFUser *friend in _facebookFriends) {
+                
+                [self.facebookPictures addObject:[self getProfilePictureFromFriend:friend]];
+            }
+            
             [self.tableView reloadData];
         }
     }];
 }
 
-- (void)executeQueryAndReloadTable {
+- (UIImage *)getProfilePictureFromFriend:(PFUser *)friend {
     
-    [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        self.items = objects;
-        [self.tableView reloadData];
-    }];
+    UIImage *image;
+    
+    return image;
 }
-
 
 #pragma mark - Table view data source
 
@@ -94,8 +99,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    // UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    UITableViewCell *cell;
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -107,6 +111,24 @@
     cell.textLabel.text = [object valueForKey:@"name"];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.selectedFriendIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"openFriendItems" sender:self];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"openFriendItems"]) {
+        
+        ListFriendItemsViewController *controller = (ListFriendItemsViewController *)segue.destinationViewController;
+        
+        controller.friendObject = [self.facebookFriends objectAtIndex:self.selectedFriendIndex];
+    }
 }
 
 
