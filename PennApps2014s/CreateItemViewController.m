@@ -7,6 +7,7 @@
 //
 
 #import "CreateItemViewController.h"
+#import <Parse/Parse.h>
 
 @interface CreateItemViewController ()
 
@@ -27,6 +28,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (IBAction)didPressDone:(id)sender {
+    
+    [self.delegate itemCreatedWithName:self.nameField.text description:self.descriptionField.text];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

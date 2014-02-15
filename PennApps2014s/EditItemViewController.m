@@ -27,6 +27,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.nameField.text = self.name;
+    self.descriptionField.text = self.desc;
+    self.nameField.delegate = self;
+    self.descriptionField.delegate = self;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    [textField selectAll:self];
+}
+
+- (IBAction)didPressDone:(id)sender {
+    
+    NSLog(@"object id: %@", self.objectID);
+    [self.delegate itemEditedWithName:self.nameField.text description:self.descriptionField.text objectID:self.objectID];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
