@@ -33,6 +33,7 @@
     if (self.friendObject) {
         
         [self executeQueryAndReloadTable];
+        _selected = [[NSMutableArray alloc] initWithCapacity:[self.items count]];
     }
 }
 
@@ -42,6 +43,7 @@
     [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         self.items = objects;
+        
         
         [self.tableView reloadData];
     }];
@@ -88,12 +90,45 @@
     cell.textLabel.text = [object valueForKey:@"name"];
     cell.detailTextLabel.text = [object valueForKey:@"desc"];
     NSLog(@"%@",[object valueForKey:@"desc"]);
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"selected an item");
+    // SM 8:00AM
+    
+    // Unhighlight Cell - Stupid Cocoa Shit makes cell grey
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    // Get PFObject of cell & find index of it in selected array
+    PFObject *obj = (PFObject *)[self.items objectAtIndex:indexPath.row];
+    NSUInteger index = [_selected indexOfObject:obj];
+    
+    if ( index == NSNotFound )
+        // if the associated PFObject (the item) isn't in the selected array
+    {
+        NSLog(@"selecting");
+        // add it to the array
+        [_selected addObject:obj];
+        
+        // select the cell (checkmark)
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType
+            = UITableViewCellAccessoryCheckmark;
+        
+    } else
+        // if it was already selected
+    {
+        NSLog(@"deselecting");
+        // remove it from the array
+        [_selected removeObjectAtIndex:index];
+        
+        // deselect the cell (no checkmark)
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType
+            = UITableViewCellAccessoryNone;
+    }
+    
+    
 }
 
 

@@ -11,6 +11,7 @@
 @interface ListFriendItemsViewController : ListTableViewController
 
 @property PFObject *friendObject;
+@property NSMutableArray *selected;
 
 - (void)executeQueryAndReloadTable;
 
