@@ -47,6 +47,7 @@
 		113AF5DE18AFFD130058AAC3 /* VenmoHandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113AF5DD18AFFD130058AAC3 /* VenmoHandleViewController.m */; };
 		113AF5E218B003770058AAC3 /* LibraryAPi.m in Sources */ = {isa = PBXBuildFile; fileRef = 113AF5E118B003770058AAC3 /* LibraryAPi.m */; };
 		113AF5E618B01D540058AAC3 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113AF5E518B01D540058AAC3 /* TDBadgedCell.m */; };
+		113AF5E918B02BD60058AAC3 /* PreviewInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113AF5E818B02BD60058AAC3 /* PreviewInvoiceViewController.m */; };
 		1196BD4C18AF54FF0089EB9C /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */; };
 		BC8BE67318AF6F7E0035A493 /* glyphicons_043_group.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67218AF6F7E0035A493 /* glyphicons_043_group.png */; };
 		BC8BE67518AF6F870035A493 /* glyphicons_449_fax.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67418AF6F870035A493 /* glyphicons_449_fax.png */; };
@@ -125,6 +126,8 @@
 		113AF5E118B003770058AAC3 /* LibraryAPi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryAPi.m; sourceTree = "<group>"; };
 		113AF5E418B01D540058AAC3 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
 		113AF5E518B01D540058AAC3 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
+		113AF5E718B02BD60058AAC3 /* PreviewInvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewInvoiceViewController.h; sourceTree = "<group>"; };
+		113AF5E818B02BD60058AAC3 /* PreviewInvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewInvoiceViewController.m; sourceTree = "<group>"; };
 		1196BD4A18AF54FF0089EB9C /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
 		1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
 		BC8BE67218AF6F7E0035A493 /* glyphicons_043_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_043_group.png; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 				11076C3C18AF092700A87B49 /* EditItemViewController.m */,
 				113AF5DC18AFFD130058AAC3 /* VenmoHandleViewController.h */,
 				113AF5DD18AFFD130058AAC3 /* VenmoHandleViewController.m */,
+				113AF5E718B02BD60058AAC3 /* PreviewInvoiceViewController.h */,
+				113AF5E818B02BD60058AAC3 /* PreviewInvoiceViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 				11076C4018AF094000A87B49 /* FindFriendsViewController.m in Sources */,
 				11076C3118AF08F000A87B49 /* CreateItemViewController.m in Sources */,
 				11076C2718AF07BD00A87B49 /* FriendsTableViewController.m in Sources */,
+				113AF5E918B02BD60058AAC3 /* PreviewInvoiceViewController.m in Sources */,
 				11076C3418AF090300A87B49 /* ClaimItemsViewController.m in Sources */,
 				11076C2018AF06E400A87B49 /* QueryTableViewController.m in Sources */,
 				113AF5E618B01D540058AAC3 /* TDBadgedCell.m in Sources */,

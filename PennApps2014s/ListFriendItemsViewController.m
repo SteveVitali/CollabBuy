@@ -46,7 +46,6 @@
         
         self.items = objects;
         
-        
         [self.tableView reloadData];
     }];
 }
@@ -80,7 +79,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    TDBadgedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    TDBadgedCell *cell; //= [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     if (cell == nil) {
         cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleDefault

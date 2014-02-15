@@ -415,7 +415,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXI-QX-96y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1731" y="1232"/>
+            <point key="canvasLocation" x="2107" y="1232"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xC0-j7-dL0">
@@ -430,7 +430,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3IY-yp-6uD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1197" y="1232"/>
+            <point key="canvasLocation" x="1731" y="1232"/>
         </scene>
         <!--List Friend Items View Controller-->
         <scene sceneID="K03-W1-3nw">
@@ -611,6 +611,7 @@
                     <navigationItem key="navigationItem" title="Pending Payments" id="YPD-Ux-ebU"/>
                     <connections>
                         <segue destination="AuA-nc-6KX" kind="modal" identifier="viewInvoice" id="Iyb-5R-twb"/>
+                        <segue destination="kyc-e3-vnv" kind="modal" identifier="previewInvoice" id="glB-xI-nnm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1HK-PG-r7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -708,6 +709,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Bm-iz-4Fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="276" y="-406"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hXN-xB-fDi">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="kyc-e3-vnv" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Srf-YQ-3sX"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Zd-8W-o0X">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Vvq-Tp-Udb" kind="relationship" relationship="rootViewController" id="O1Q-Qd-UEm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZR-7s-ABV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1731" y="577"/>
+        </scene>
+        <!--Preview Invoice View Controller-->
+        <scene sceneID="qXY-Ci-NGe">
+            <objects>
+                <tableViewController storyboardIdentifier="invoiceViewController" id="Vvq-Tp-Udb" customClass="PreviewInvoiceViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="54y-as-bO8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="hcd-Eg-hqt" detailTextLabel="9iK-9A-62C" style="IBUITableViewCellStyleValue1" id="6fv-4Y-JiL">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6fv-4Y-JiL" id="Nzx-ny-1fF">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hcd-Eg-hqt">
+                                            <rect key="frame" x="15" y="11" width="33" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9iK-9A-62C">
+                                            <rect key="frame" x="261" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="z9C-bi-PNl">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="hTc-8h-AGk">
+                            <connections>
+                                <action selector="didPressCancel:" destination="Vvq-Tp-Udb" id="8YT-nc-Y0c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B0U-ZY-KT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2107" y="577"/>
         </scene>
     </scenes>
     <resources>

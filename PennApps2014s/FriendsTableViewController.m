@@ -31,6 +31,69 @@
 	// Do any additional setup after loading the view.
     
     [self initFacebookFriends];
+    
+    // Add refresh control
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    
+    // Completely copied the initFacebookFriends method and added a line at the end.
+    // Take that DRY principle
+    [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            // result will contain an array with your user's friends in the "data" key
+            NSArray *friendObjects = [result objectForKey:@"data"];
+            NSMutableArray *friendIds = [NSMutableArray arrayWithCapacity:friendObjects.count];
+            // Create a list of friends' Facebook IDs
+            for (NSDictionary *friendObject in friendObjects) {
+                [friendIds addObject:[friendObject objectForKey:@"id"]];
+            }
+            
+            // Construct a PFUser query that will find friends whose facebook ids
+            // are contained in the current user's friend list.
+            PFQuery *friendQuery = [PFUser query];
+            NSLog(@"%@", friendIds);
+            [friendQuery whereKey:@"facebookID" containedIn:friendIds];
+            
+            // findObjects will return a list of PFUsers that are friends
+            // with the current user
+            NSMutableArray *friendUsers = (NSMutableArray *)[friendQuery findObjects];
+            
+            NSLog(@"%@", friendUsers);
+            NSMutableDictionary *tempPictureData = [[NSMutableDictionary alloc] initWithCapacity:[_facebookFriends count]];
+            
+            _facebookFriends = (NSArray *)friendUsers;
+            
+            [self.tableView reloadData];
+            
+            for (PFUser *user in friendUsers) {
+                
+                PFFile *imageFile = (PFFile *)[user valueForKey:@"profilePicture"];
+                
+                [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error) {
+                        // NSLog(@"Data received. Data: %@", data);
+                        UIImage *profilePicture = [UIImage imageWithData:data];
+                        [tempPictureData setObject:profilePicture forKey:[user objectForKey:@"facebookID"]];
+                    } else {
+                        NSLog(@"There was an error getting the data.");
+                    }
+                }];
+                
+                // idek wat wat wat wat kkk
+                //[self.facebookPictures addObject:[UIImage imageWithData:[imageFile getData]]];
+            }
+            
+            _facebookPictures = (NSDictionary *)tempPictureData;
+            
+            [self.tableView reloadData];
+            
+            [refreshControl endRefreshing];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning

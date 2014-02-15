@@ -9,6 +9,7 @@
 #import "InvoiceListViewController.h"
 #import "InvoiceViewController.h"
 #import "TDBadgedCell.h"
+#import "PreviewInvoiceViewController.h"
 
 @interface InvoiceListViewController ()
 
@@ -31,6 +32,22 @@
 	// Do any additional setup after loading the view.
         
     [self executeQueryAndReloadTable];
+    
+    // Add refresh control
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    
+    [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        self.invoices = objects;
+        
+        [self.tableView reloadData];
+        [refreshControl endRefreshing];
+    }];
 }
 
 - (PFQuery *)queryForTable {
@@ -38,10 +55,11 @@
     PFQuery *userItemsQuery = [PFQuery queryWithClassName:@"Invoice"];
     
     [userItemsQuery whereKey:@"recipient" equalTo:[PFUser currentUser]];
-    [userItemsQuery orderByDescending:@"createdAt"];
-    
+        
     [userItemsQuery includeKey:@"items"];
     [userItemsQuery includeKey:@"sender"];
+    
+    [userItemsQuery orderByAscending:@"transactionExecuted"];
     
     return userItemsQuery;
 }
@@ -118,8 +136,8 @@
     }
     else if ([[invoice valueForKey:@"transactionPending"] isEqualToString:@"YES"]) {
         
-        cell.textLabel.textColor = [UIColor grayColor];
-        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
         
         // Badges, motherfucker
         cell.badgeString = @"Pending";
@@ -137,6 +155,8 @@
         //cell.badgeString = @"";
         //cell.badgeColor = [UIColor redColor];
     }
+    
+    cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
 }
@@ -187,6 +207,17 @@
         controller.invoice = (PFObject *)[self.invoices objectAtIndex:self.selectedInvoiceIndex];
         //NSLog(@"sender handle: %@", senderHandle);
     }
+    if ([segue.identifier isEqualToString:@"previewInvoice"]) {
+        
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        PreviewInvoiceViewController *controller = (PreviewInvoiceViewController *)navController.viewControllers[0];
+        
+        controller.items = [[self.invoices objectAtIndex:self.selectedInvoiceIndex] valueForKey:@"items"];
+        controller.prices= [[self.invoices objectAtIndex:self.selectedInvoiceIndex] valueForKey:@"prices"];
+        
+        controller.invoice = (PFObject *)[self.invoices objectAtIndex:self.selectedInvoiceIndex];
+    }
+    
 }
 
 

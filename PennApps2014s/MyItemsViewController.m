@@ -50,9 +50,25 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
         [self performSegueWithIdentifier:@"venmoHandle" sender:self];
     }
     
+    // Add refresh control
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    
     //PFFile *file = (PFFile *)[[PFUser currentUser] objectForKey:@"profilePicture"];
    // [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageWithData:file.getData]]];
     
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    
+    [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        self.items = objects;
+        
+        [self.tableView reloadData];
+        [refreshControl endRefreshing];
+    }];
 }
 
 // VenmoHandlerViewControllerDelegate method
@@ -74,7 +90,6 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
         
         [self.tableView reloadData];
         
-        ;
     }];
 }
 
@@ -120,7 +135,10 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     PFQuery *userItemsQuery = [PFQuery queryWithClassName:@"Item"];
     
     [userItemsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [userItemsQuery orderByDescending:@"createdAt"];
+    
+    //[userItemsQuery orderByDescending:@"createdAt"];
+    [userItemsQuery orderByAscending:@"paidFor"];
+    [userItemsQuery orderByAscending:@"paymentPending"];
     
     return userItemsQuery;
 }
@@ -305,7 +323,7 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
   
     static NSString *CellIdentifier = @"Cell";
     
-   TDBadgedCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    TDBadgedCell *cell; //= [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
   //  UITableViewCell *cell;
     // Configure the cell...
     if (cell == nil) {
@@ -329,7 +347,7 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
         cell.badgeColor = [UIColor grayColor];
         cell.badge.radius = 9;
         cell.badge.fontSize = 18;
-        cell.showShadow = YES;
+        cell.showShadow = NO;
     }
     else if ([[item valueForKey:@"paymentPending"] isEqualToString:@"YES"]) {
         
@@ -341,7 +359,7 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
         cell.badgeColor = [UIColor redColor];
         cell.badge.radius = 9;
         cell.badge.fontSize = 18;
-        cell.showShadow = YES;
+        cell.showShadow = NO;
     }
     else {
         
@@ -360,7 +378,17 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     self.selectedItemIndex = indexPath.row;
-    [self performSegueWithIdentifier:@"editItem" sender:self];
+    PFObject *item = (PFObject *)[self.items objectAtIndex:self.selectedItemIndex];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    if ([[item valueForKey:@"paidFor"] isEqualToString:@"YES"] || [[item valueForKey:@"paymentPending"] isEqualToString:@"YES"]) {
+        
+        // don't do anything
+    }
+    else {
+        [self performSegueWithIdentifier:@"editItem" sender:self];
+    }
 }
 
 /*
