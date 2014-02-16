@@ -704,23 +704,28 @@
         <scene sceneID="SBj-WH-Pqw">
             <objects>
                 <tableViewController id="n22-Cg-bUX" customClass="NewsFeedViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CiC-Iu-4jU">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="CiC-Iu-4jU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Rf5-Xf-LMV">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="Rf5-Xf-LMV">
+                                <rect key="frame" x="0.0" y="86" width="320" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rf5-Xf-LMV" id="kcZ-JR-3HC">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="EVA-DZ-kIB">
-                        <barButtonItem key="rightBarButtonItem" title="Claim Items" id="rD7-bP-elD"/>
+                        <barButtonItem key="rightBarButtonItem" title="Claim Items" id="rD7-bP-elD">
+                            <connections>
+                                <segue destination="U9J-yE-5ds" kind="modal" identifier="claimItemsFromFeed" id="s4K-8F-LGZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="claimButton" destination="rD7-bP-elD" id="CAW-z9-4Ad"/>
@@ -734,7 +739,7 @@
         <scene sceneID="LYI-72-EUk">
             <objects>
                 <navigationController definesPresentationContext="YES" id="6Cn-ba-H1y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="newsfeed.png" id="aST-zB-Kpm"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed.png" id="aST-zB-Kpm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pCx-jg-Idy">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -864,8 +869,8 @@
     <resources>
         <image name="circles.png" width="32" height="32"/>
         <image name="contact.png" width="32" height="32"/>
+        <image name="feed.png" width="32" height="32"/>
         <image name="invoices.png" width="32" height="32"/>
-        <image name="newsfeed.png" width="32" height="32"/>
         <image name="shopping.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -873,4 +878,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="s4K-8F-LGZ"/>
+    </inferredMetricsTieBreakers>
 </document>

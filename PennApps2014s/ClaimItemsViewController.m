@@ -58,7 +58,13 @@
         //NSLog(@"Price: %f", [self getNumberFromPriceString:price].floatValue);
     }
     
-    [self submitInvoiceToUser:self.recipient withItems:self.claimedItems andPrices:priceNumbers];
+    // Because fuck you, that's why.
+    if (self.recipient) {
+        [self submitInvoiceToUser:self.recipient withItems:self.claimedItems andPrices:priceNumbers];
+    }
+    else if (self.recipients) {
+        [self submitInvoiceToUsers:self.recipients withItems:self.claimedItems andPrices:priceNumbers];
+    }
 }
 
 - (void)submitInvoiceToUser:(PFObject *)recipient withItems:(NSArray *)items andPrices:(NSArray *)prices {
@@ -78,6 +84,41 @@
         [self dismissViewControllerAnimated:YES completion:^{
             [self.delegate executeQueryAndReloadTable];
         }];
+    }];
+}
+
+- (void)submitInvoiceToUsers:(NSArray *)recipients withItems:(NSArray *)items andPrices:(NSArray *)prices {
+    
+    NSLog(@"fuck this shit");
+    for (int i=0; i<[recipients count]; i++) {
+        PFObject *invoice = [PFObject objectWithClassName:@"Invoice"];
+        
+        invoice[@"sender"]    = [PFUser currentUser];
+        invoice[@"recipient"] = (PFUser *)[[items objectAtIndex:i] valueForKey:@"user"];
+        
+        NSMutableArray *tempItems = [[NSMutableArray alloc] init];
+        NSMutableArray *tempPrices= [[NSMutableArray alloc] init];
+
+        for (int j=0; j<[items count]; j++) {
+            
+            if ([[[items objectAtIndex:j] valueForKey:@"user"] isEqual:[recipients objectAtIndex:i]]) {
+                
+                [tempItems addObject:[items objectAtIndex:j]];
+                [tempPrices addObject:[prices objectAtIndex:j]];
+            }
+        }
+        invoice[@"items"]     = tempItems;
+        invoice[@"prices"]    = tempPrices;
+        
+        [invoice saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            NSLog(@"aw yeah, invoice sent");
+            [self setPendingItems:tempItems andInvoice:(PFObject *)invoice];
+            [self.delegate executeQueryAndReloadTable];
+        }];
+    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.delegate executeQueryAndReloadTable];
     }];
 }
 

@@ -30,19 +30,16 @@
 	// Do any additional setup after loading the view.
     [self.claimButton setEnabled:NO];
     
-    NSLog(@"id: %@", self.friendObject.objectId);
-    
-    if (self.friendObject) {
-        
-        [self executeQueryAndReloadTable];
-         self.selected = [[NSMutableArray alloc] initWithCapacity:[self.items count]];
-        
-    }
+    [self executeQueryAndReloadTable];
+    self.selected = [[NSMutableArray alloc] initWithCapacity:[self.items count]];
+    self.friendObjects = [[NSMutableArray alloc] initWithCapacity:[self.items count]];
     
     // Add refresh control
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
+    
+    [self refresh:self.refreshControl];
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
@@ -146,7 +143,7 @@
         //cell.badgeColor = [UIColor redColor];
     }
     
-    cell.horizontalOffset = [NSNumber numberWithInt:24];
+    cell.horizontalOffset = [NSNumber numberWithInt:28];
     
     return cell;
 }
@@ -174,10 +171,10 @@
             NSLog(@"selecting");
             // add it to the array
             [self.selected addObject:obj];
+            [self.friendObjects addObject:[obj valueForKey:@"user"]];
             
             // select the cell (checkmark)
             [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-            
         }
         else {
             // if it was already selected
@@ -185,6 +182,7 @@
             NSLog(@"deselecting");
             // remove it from the array
             [self.selected removeObjectAtIndex:index];
+            [self.friendObjects removeObject:[obj valueForKey:@"user"]];
             
             // deselect the cell (no checkmark)
             [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
@@ -196,20 +194,22 @@
     else {
         [self.claimButton setEnabled:YES];
     }
-    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if([segue.identifier isEqualToString:@"claimItems"]) {
+    if([segue.identifier isEqualToString:@"claimItemsFromFeed"]) {
         
         UINavigationController *navController = [segue destinationViewController];
         NSLog(@"nav: %@", navController.class);
         ClaimItemsViewController *destinationController = (ClaimItemsViewController *)[navController viewControllers][0];
         
         destinationController.claimedItems = [NSArray arrayWithArray:self.selected];
-        destinationController.recipient    = self.friendObject;
+        destinationController.recipients    = self.friendObjects;
         destinationController.delegate = self;
+        
+        // Because fuck you, that's why.
+        destinationController.recipient = nil;
         
         NSLog(@"dest: %@", destinationController.class);
         //destinationController.delegate = self;

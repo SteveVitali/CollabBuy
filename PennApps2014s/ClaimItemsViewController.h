@@ -13,6 +13,8 @@
 
 @property NSArray *claimedItems;
 @property PFObject *recipient;
+// Because News Feed and welpwelpwelp.
+@property NSArray *recipients;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 - (IBAction)didPressCancel:(id)sender;

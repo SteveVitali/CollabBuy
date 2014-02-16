@@ -13,7 +13,5 @@
 @property NSArray *invoices;
 @property NSInteger selectedInvoiceIndex;
 
-
-
 @end
 

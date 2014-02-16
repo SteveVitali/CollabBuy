@@ -371,6 +371,7 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
         //cell.badgeString = @"";
         //cell.badgeColor = [UIColor redColor];
     }
+    cell.horizontalOffset = [NSNumber numberWithInt:24];
 
     return cell;
 }

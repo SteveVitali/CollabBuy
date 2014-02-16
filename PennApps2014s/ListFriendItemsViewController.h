@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *claimButton;
 
 @property PFObject *friendObject;
+@property NSMutableArray *friendObjects;
 @property NSMutableArray *selected;
 
 - (void)executeQueryAndReloadTable;

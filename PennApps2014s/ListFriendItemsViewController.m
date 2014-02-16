@@ -140,11 +140,11 @@
         cell.textLabel.textColor = [UIColor blackColor];
         cell.detailTextLabel.textColor = [UIColor blackColor];
         
-        
         // Badges, motherfucker
         //cell.badgeString = @"";
         //cell.badgeColor = [UIColor redColor];
     }
+    cell.horizontalOffset = [NSNumber numberWithInt:24];
 
     return cell;
 }
@@ -194,7 +194,6 @@
     else {
         [self.claimButton setEnabled:YES];
     }
-    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -208,6 +207,8 @@
         destinationController.claimedItems = [NSArray arrayWithArray:_selected];
         destinationController.recipient    = self.friendObject;
         destinationController.delegate = self;
+        // Becasue fuck  you, that's why.
+        destinationController.recipients = nil;
         
         NSLog(@"dest: %@", destinationController.class);
         //destinationController.delegate = self;

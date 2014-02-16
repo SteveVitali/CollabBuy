@@ -158,6 +158,8 @@
     
     cell.backgroundColor = [UIColor whiteColor];
     
+    cell.horizontalOffset = [NSNumber numberWithInt:24];
+
     return cell;
 }
 
