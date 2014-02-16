@@ -7,6 +7,7 @@
 //
 
 #import "CirclesViewController.h"
+#import "CircleItemsViewController.h"
 #import "CreateCircleViewController.h"
 #import <Parse/Parse.h>
 
@@ -76,7 +77,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell;
     
     // Configure the cell...
     if (cell == nil) {
@@ -84,7 +85,7 @@
                                       reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [self.circles objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.circles objectAtIndex:indexPath.row][@"name"];
     
     return cell;
 }
@@ -138,6 +139,10 @@
         CreateCircleViewController *controller = (CreateCircleViewController *)[segue.destinationViewController viewControllers][0];
         
         controller.creator = self;
+    } else if ([segue.identifier isEqualToString:@"viewCircle"]) {
+        CircleItemsViewController *controller = (CircleItemsViewController *)[segue.destinationViewController viewControllers][0];
+        
+        controller.circle = [self.circles objectAtIndex:self.selectedCircleIndex];
     }
 }
 

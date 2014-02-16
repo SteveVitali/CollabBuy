@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 @property NSArray *circles;
+@property NSInteger selectedCircleIndex;
 
 - (void)executeQueryAndReloadTable;
 

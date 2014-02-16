@@ -107,6 +107,9 @@
     
     PFObject *circle = [PFObject objectWithClassName:@"Circle"];
     
+    NSMutableArray *members = [NSMutableArray arrayWithArray:_selected];
+    [members addObject:[PFUser currentUser][@"facebookId"]];
+    
     circle[@"name"]    = circleName;
     circle[@"members"] = _selected;
     

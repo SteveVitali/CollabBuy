@@ -624,6 +624,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="tCC-KE-dIu" kind="push" identifier="viewCircle" id="zjh-2i-TJA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -704,6 +707,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMh-3T-3YS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1756" y="1925"/>
+        </scene>
+        <!--Table View Controller - Title-->
+        <scene sceneID="wT0-A5-eKQ">
+            <objects>
+                <tableViewController id="Gqv-iT-Y7r" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="12K-ye-JvW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="F5c-r8-v0A" detailTextLabel="wOT-GK-A97" style="IBUITableViewCellStyleSubtitle" id="jx6-j6-W0O">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jx6-j6-W0O" id="boW-Sd-IYs">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F5c-r8-v0A">
+                                            <rect key="frame" x="15" y="3" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wOT-GK-A97">
+                                            <rect key="frame" x="15" y="25" width="43" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="RSQ-Zg-jHT">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="LbA-wV-XOQ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="guH-Hm-6eT"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="AN9-JX-Qre" kind="push" identifier="createCircleItem" id="vua-TZ-U9V"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zoe-ne-sXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2150" y="1965"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="M0X-FN-RfO">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="tCC-KE-dIu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Oaz-ox-n5l"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N68-nR-Udm">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Gqv-iT-Y7r" kind="relationship" relationship="rootViewController" id="EHo-Bt-bN8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aqI-eL-WGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1538" y="1971"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bg4-4D-7wq">
@@ -932,5 +998,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="s4K-8F-LGZ"/>
+        <segue reference="vua-TZ-U9V"/>
     </inferredMetricsTieBreakers>
 </document>
