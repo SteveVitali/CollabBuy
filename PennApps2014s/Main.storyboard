@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-186" y="271"/>
         </scene>
-        <!--My Items View Controller - My Items-->
+        <!--My Items View Controller - My Shopping List-->
         <scene sceneID="dSB-XU-JRV">
             <objects>
                 <tableViewController storyboardIdentifier="MyItemsViewController" id="V3a-YK-Df7" customClass="MyItemsViewController" sceneMemberID="viewController">
@@ -65,7 +65,7 @@
                     <toolbarItems>
                         <barButtonItem title="Item" id="r89-e9-6xB"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="My Items" id="NE8-Ru-VXt">
+                    <navigationItem key="navigationItem" title="My Shopping List" id="NE8-Ru-VXt">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dV4-CA-2fm">
                             <connections>
                                 <action selector="didPressAddButton" destination="V3a-YK-Df7" id="B0p-vU-JsE"/>
