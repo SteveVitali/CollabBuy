@@ -734,7 +734,7 @@
         <scene sceneID="LYI-72-EUk">
             <objects>
                 <navigationController definesPresentationContext="YES" id="6Cn-ba-H1y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="newsfeed.png" id="aST-zB-Kpm"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed.png" id="aST-zB-Kpm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pCx-jg-Idy">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -864,8 +864,8 @@
     <resources>
         <image name="circles.png" width="32" height="32"/>
         <image name="contact.png" width="32" height="32"/>
+        <image name="feed.png" width="32" height="32"/>
         <image name="invoices.png" width="32" height="32"/>
-        <image name="newsfeed.png" width="32" height="32"/>
         <image name="shopping.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
