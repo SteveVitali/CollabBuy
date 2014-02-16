@@ -138,7 +138,8 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
     
     //[userItemsQuery orderByDescending:@"createdAt"];
     [userItemsQuery orderByAscending:@"paidFor"];
-    [userItemsQuery orderByAscending:@"paymentPending"];
+    [userItemsQuery addAscendingOrder:@"paymentPending"];
+    [userItemsQuery addDescendingOrder:@"createdAt"];
     
     return userItemsQuery;
 }
@@ -327,9 +328,10 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
   //  UITableViewCell *cell;
     // Configure the cell...
     if (cell == nil) {
-        cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                                reuseIdentifier:CellIdentifier];
     }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     // Configure the cell...
     PFObject *item = (PFObject *)[self.items objectAtIndex:indexPath.row];
@@ -370,7 +372,7 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
         //cell.badgeString = @"";
         //cell.badgeColor = [UIColor redColor];
     }
-    
+
     return cell;
 }
 

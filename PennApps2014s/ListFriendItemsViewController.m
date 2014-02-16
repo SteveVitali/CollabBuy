@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.claimButton setEnabled:NO];
     
     NSLog(@"id: %@", self.friendObject.objectId);
     
@@ -37,6 +38,22 @@
         [self executeQueryAndReloadTable];
         _selected = [[NSMutableArray alloc] initWithCapacity:[self.items count]];
     }
+    
+    // Add refresh control
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    
+    [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        self.items = objects;
+        
+        [self.tableView reloadData];
+        [refreshControl endRefreshing];
+    }];
 }
 
 - (void)executeQueryAndReloadTable {
@@ -55,8 +72,10 @@
     PFQuery *userItemsQuery = [PFQuery queryWithClassName:@"Item"];
     
     [userItemsQuery whereKey:@"user" equalTo:self.friendObject];
-    [userItemsQuery orderByDescending:@"createdAt"];
-    
+    [userItemsQuery orderByAscending:@"paidFor"];
+    [userItemsQuery addAscendingOrder:@"paymentPending"];
+    [userItemsQuery addDescendingOrder:@"createdAt"];
+
     return userItemsQuery;
 }
 
@@ -102,7 +121,7 @@
         cell.badgeColor = [UIColor grayColor];
         cell.badge.radius = 9;
         cell.badge.fontSize = 18;
-        cell.showShadow = YES;
+        cell.showShadow = NO;
     }
     else if ([[item valueForKey:@"paymentPending"] isEqualToString:@"YES"]) {
         
@@ -114,7 +133,7 @@
         cell.badgeColor = [UIColor redColor];
         cell.badge.radius = 9;
         cell.badge.fontSize = 18;
-        cell.showShadow = YES;
+        cell.showShadow = NO;
     }
     else {
         
@@ -168,6 +187,12 @@
             // deselect the cell (no checkmark)
             [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
         }
+    }
+    if ([self.selected count] == 0) {
+        [self.claimButton setEnabled:NO];
+    }
+    else {
+        [self.claimButton setEnabled:YES];
     }
     
 }

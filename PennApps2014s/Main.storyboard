@@ -478,6 +478,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="claimButton" destination="Ax7-Nr-DNr" id="533-A2-46h"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0O-9P-521" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -787,6 +790,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cYh-fK-UWy"/>
+        <segue reference="XlE-h5-NJ3"/>
     </inferredMetricsTieBreakers>
 </document>
