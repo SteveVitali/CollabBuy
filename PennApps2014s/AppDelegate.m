@@ -34,6 +34,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [PFFacebookUtils initializeFacebook];
     
+    // Register for push notifications
+    [application registerForRemoteNotificationTypes:
+                 UIRemoteNotificationTypeBadge |
+                 UIRemoteNotificationTypeAlert |
+                 UIRemoteNotificationTypeSound];
+    
     self.venmoClient = [[LibraryAPI sharedInstance] venmoClient];
 
     return YES;
@@ -87,6 +93,23 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 - (void)applicationWillTerminate:(UIApplication *)application {
     
     [[PFFacebookUtils session] close];
+}
+
+// For Push Notifications
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
+    
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:newDeviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    [PFPush handlePush:userInfo];
 }
 
 @end
