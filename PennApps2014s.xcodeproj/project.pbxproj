@@ -59,12 +59,6 @@
 		1C20217F18B09F0A00B89F2E /* invoices@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C20217D18B09F0A00B89F2E /* invoices@2x.png */; };
 		1C20218318B09F7000B89F2E /* shopping.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C20218118B09F7000B89F2E /* shopping.png */; };
 		1C20218418B09F7000B89F2E /* shopping@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C20218218B09F7000B89F2E /* shopping@2x.png */; };
-		BC5BCED718B070FE00E5BC36 /* glyphicons_340_globe.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5BCED618B070FE00E5BC36 /* glyphicons_340_globe.png */; };
-		BC5BCED918B0715A00E5BC36 /* glyphicons_088_address_book.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5BCED818B0715A00E5BC36 /* glyphicons_088_address_book.png */; };
-		BC8BE67318AF6F7E0035A493 /* glyphicons_043_group.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67218AF6F7E0035A493 /* glyphicons_043_group.png */; };
-		BC8BE67518AF6F870035A493 /* glyphicons_449_fax.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67418AF6F870035A493 /* glyphicons_449_fax.png */; };
-		BC8BE67718AF6F950035A493 /* glyphicons_208_cart_out.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67618AF6F950035A493 /* glyphicons_208_cart_out.png */; };
-		BC8BE67918AF6FA60035A493 /* glyphicons_280_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */; };
 		BC8BE68018AFB8210035A493 /* ClaimItemsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8BE67F18AFB8210035A493 /* ClaimItemsTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -152,12 +146,6 @@
 		1C20217D18B09F0A00B89F2E /* invoices@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invoices@2x.png"; sourceTree = "<group>"; };
 		1C20218118B09F7000B89F2E /* shopping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopping.png; sourceTree = "<group>"; };
 		1C20218218B09F7000B89F2E /* shopping@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping@2x.png"; sourceTree = "<group>"; };
-		BC5BCED618B070FE00E5BC36 /* glyphicons_340_globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_340_globe.png; sourceTree = "<group>"; };
-		BC5BCED818B0715A00E5BC36 /* glyphicons_088_address_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_088_address_book.png; sourceTree = "<group>"; };
-		BC8BE67218AF6F7E0035A493 /* glyphicons_043_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_043_group.png; sourceTree = "<group>"; };
-		BC8BE67418AF6F870035A493 /* glyphicons_449_fax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_449_fax.png; sourceTree = "<group>"; };
-		BC8BE67618AF6F950035A493 /* glyphicons_208_cart_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_208_cart_out.png; sourceTree = "<group>"; };
-		BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_280_settings.png; sourceTree = "<group>"; };
 		BC8BE67E18AFB8210035A493 /* ClaimItemsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimItemsTableViewCell.h; sourceTree = "<group>"; };
 		BC8BE67F18AFB8210035A493 /* ClaimItemsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimItemsTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,7 +251,6 @@
 				1C20217618B09E3700B89F2E /* contact */,
 				1C20217118B09DD200B89F2E /* circles */,
 				1C20216C18B09D8300B89F2E /* newsfeed */,
-				BC8BE67118AF6F570035A493 /* glyphicons */,
 				11076BD418AF030E00A87B49 /* PennApps2014s-Info.plist */,
 				11076BD518AF030E00A87B49 /* InfoPlist.strings */,
 				11076BD818AF030E00A87B49 /* main.m */,
@@ -416,19 +403,6 @@
 			path = shopping;
 			sourceTree = "<group>";
 		};
-		BC8BE67118AF6F570035A493 /* glyphicons */ = {
-			isa = PBXGroup;
-			children = (
-				BC5BCED818B0715A00E5BC36 /* glyphicons_088_address_book.png */,
-				BC5BCED618B070FE00E5BC36 /* glyphicons_340_globe.png */,
-				BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */,
-				BC8BE67218AF6F7E0035A493 /* glyphicons_043_group.png */,
-				BC8BE67618AF6F950035A493 /* glyphicons_208_cart_out.png */,
-				BC8BE67418AF6F870035A493 /* glyphicons_449_fax.png */,
-			);
-			name = glyphicons;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -506,23 +480,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C20217018B09D8300B89F2E /* newsfeed@2x.png in Resources */,
-				BC5BCED918B0715A00E5BC36 /* glyphicons_088_address_book.png in Resources */,
 				1C20217518B09DD200B89F2E /* circles@2x.png in Resources */,
 				1C20217F18B09F0A00B89F2E /* invoices@2x.png in Resources */,
-				BC8BE67918AF6FA60035A493 /* glyphicons_280_settings.png in Resources */,
 				1C20218418B09F7000B89F2E /* shopping@2x.png in Resources */,
 				1C20218318B09F7000B89F2E /* shopping.png in Resources */,
 				1C20217A18B09E3700B89F2E /* contact@2x.png in Resources */,
 				1C20217418B09DD200B89F2E /* circles.png in Resources */,
-				BC5BCED718B070FE00E5BC36 /* glyphicons_340_globe.png in Resources */,
 				1C20217918B09E3700B89F2E /* contact.png in Resources */,
 				11076BE518AF030E00A87B49 /* Images.xcassets in Resources */,
 				1C20216F18B09D8300B89F2E /* newsfeed.png in Resources */,
-				BC8BE67318AF6F7E0035A493 /* glyphicons_043_group.png in Resources */,
 				11076BD718AF030E00A87B49 /* InfoPlist.strings in Resources */,
-				BC8BE67718AF6F950035A493 /* glyphicons_208_cart_out.png in Resources */,
 				11076C0818AF03A900A87B49 /* Main.storyboard in Resources */,
-				BC8BE67518AF6F870035A493 /* glyphicons_449_fax.png in Resources */,
 				1C20217E18B09F0A00B89F2E /* invoices.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
