@@ -30,6 +30,8 @@
 	// Do any additional setup after loading the view.
     
     [self initFacebookFriends];
+    
+    _selected = [[NSMutableArray alloc] initWithCapacity:[_facebookFriends count]];
 }
 
 - (void)initFacebookFriends {
@@ -57,17 +59,13 @@
             NSLog(@"%@", friendUsers);
             NSMutableDictionary *tempPictureData = [[NSMutableDictionary alloc] initWithCapacity:[_facebookFriends count]];
             
-            _facebookFriends = (NSArray *)friendUsers;
-            
-            [self.tableView reloadData];
-            
             for (PFUser *user in friendUsers) {
                 
                 PFFile *imageFile = (PFFile *)[user valueForKey:@"profilePicture"];
                 
                 [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                     if (!error) {
-                        // NSLog(@"Data received. Data: %@", data);
+                        NSLog(@"Data received. Data: %@", data);
                         UIImage *profilePicture = [UIImage imageWithData:data];
                         [tempPictureData setObject:profilePicture forKey:[user objectForKey:@"facebookID"]];
                     } else {
@@ -79,6 +77,7 @@
                 //[self.facebookPictures addObject:[UIImage imageWithData:[imageFile getData]]];
             }
             
+            _facebookFriends = (NSArray *)friendUsers;
             _facebookPictures = (NSDictionary *)tempPictureData;
             
             [self.tableView reloadData];
@@ -108,7 +107,7 @@
     PFObject *circle = [PFObject objectWithClassName:@"Circle"];
     
     circle[@"name"]    = circleName;
-    circle[@"members"] = circleMembers;
+    circle[@"members"] = _selected;
     
     [circle saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"gurl, circle saved to Parse");
@@ -127,7 +126,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_facebookFriends count];
+    return [self.facebookFriends count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -135,34 +134,50 @@
     static NSString *CellIdentifier = @"Cell";
     
     FriendTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    // Configure the cell...
     if (cell == nil) {
-        cell = [[FriendTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[FriendTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:CellIdentifier];
     }
     
-    // configure the cell....
-    PFObject *object = (PFObject *)[_facebookFriends objectAtIndex:indexPath.row];
+    // Configure the cell...
+    PFObject *object = (PFObject *)[self.facebookFriends objectAtIndex:indexPath.row];
     cell.nameLabel.text = [object valueForKey:@"name"];
-    cell.imageView.image = [self.facebookPictures objectForKey:[object objectForKey:@"facebookID"]];
+    
+    UIImage *thumbnail = [self.facebookPictures objectForKey:[object objectForKey:@"facebookID"]];
+    if (thumbnail == nil) {
+        thumbnail = [UIImage imageNamed:@"profile@2x.png"];
+    }
+    CGSize itemSize = CGSizeMake(43, 43);
+    UIGraphicsBeginImageContext(itemSize);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    [thumbnail drawInRect:imageRect];
+    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //    cell.imageView.image = [self.facebookPictures objectForKey:[object objectForKey:@"facebookID"]];
+    //    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    // SM 4:15AM #winning
+    
     // Unhighlight Cell - Stupid Cocoa Shit makes cell grey
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     // Get PFObject of cell & find index of it in selected array
-    PFObject *obj = (PFObject *)[self.facebookFriends objectAtIndex:indexPath.row];
-    NSUInteger index = [_selected indexOfObject:obj];
+    PFObject *friend = (PFObject *)[_facebookFriends objectAtIndex:indexPath.row];
+    NSUInteger index = [_selected indexOfObject:(NSString *)friend[@"facebookID"]];
     
     if ( index == NSNotFound ) {
         // if the associated PFObject (the item) isn't in the selected array
         
         NSLog(@"selecting");
         // add it to the array
-        [_selected addObject:obj];
+        [_selected addObject:(NSString *)friend[@"facebookID"]];
         
         // select the cell (checkmark)
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
@@ -178,6 +193,7 @@
         // deselect the cell (no checkmark)
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     }
+    
 
 }
 
