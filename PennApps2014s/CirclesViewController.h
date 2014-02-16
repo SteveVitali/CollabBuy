@@ -13,7 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
-- (IBAction)addButtonPressed:(id)sender;
 @property NSArray *circles;
 
 @end

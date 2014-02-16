@@ -103,8 +103,6 @@
         }
     }];
     
-    NSLog(@"%@", _facebookPictures);
-    
     [self.tableView reloadData];
 }
 

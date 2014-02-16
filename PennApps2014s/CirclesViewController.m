@@ -40,8 +40,6 @@
     return userCirclesQuery;
 }
 
-
-
 - (void)executeQueryAndReloadTable {
     
     [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -51,10 +49,6 @@
         [self.tableView reloadData];
         
     }];
-}
-
-- (IBAction)addButtonPressed:(id)sender {
-    
 }
 
 - (void)didReceiveMemoryWarning

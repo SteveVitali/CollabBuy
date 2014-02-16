@@ -49,7 +49,7 @@
     
     [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-        self.items = objects;
+        self.items = (NSMutableArray *)objects;
         
         [self.tableView reloadData];
         [refreshControl endRefreshing];
@@ -61,7 +61,7 @@
     NSLog(@"this ran");
     [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-        self.items = objects;
+        self.items = (NSMutableArray *)objects;
         
         [self.tableView reloadData];
     }];

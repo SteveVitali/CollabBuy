@@ -12,8 +12,15 @@
 
 @property NSArray *facebookFriends;
 @property NSDictionary *facebookPictures;
-@property NSMutableArray *selected;
+@property NSInteger selectedFriendIndex;
 
 @property NSMutableData *imageData;
+
+@property NSMutableArray *selected;
+
+@property (weak, nonatomic) IBOutlet UITextField *circleNameInput;
+
+- (IBAction)didPressSave:(id)sender;
+- (IBAction)didPressCancel:(id)sender;
 
 @end

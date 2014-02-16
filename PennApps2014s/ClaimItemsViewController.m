@@ -32,6 +32,8 @@
 	// Do any additional setup after loading the view.
 }
 
+# pragma mark - IBActions
+
 - (IBAction)didPressCancel:(id)sender{
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -66,6 +68,8 @@
         [self submitInvoiceToUsers:self.recipients withItems:self.claimedItems andPrices:priceNumbers];
     }
 }
+
+# pragma mark - Invoice Specific
 
 - (void)submitInvoiceToUser:(PFObject *)recipient withItems:(NSArray *)items andPrices:(NSArray *)prices {
     

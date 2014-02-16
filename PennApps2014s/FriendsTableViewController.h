@@ -13,6 +13,7 @@
 
 @property NSArray *facebookFriends;
 @property NSDictionary *facebookPictures;
+@property NSMutableArray *selected;
 @property NSInteger selectedFriendIndex;
 
 @property NSMutableData *imageData;
