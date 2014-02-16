@@ -41,6 +41,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                  UIRemoteNotificationTypeSound];
     
     self.venmoClient = [[LibraryAPI sharedInstance] venmoClient];
+    
+    // Create our Installation query
+    PFQuery *pushQuery = [PFInstallation query];
+    [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
+    
+    // Send push notification to query
+    [PFPush sendPushMessageToQueryInBackground:pushQuery
+                                   withMessage:@"Hello World!"];
 
     return YES;
 }

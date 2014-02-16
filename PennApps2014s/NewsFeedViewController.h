@@ -17,5 +17,7 @@
 - (void)executeQueryAndReloadTable;
 - (void)refresh:(UIRefreshControl *)refreshControl;
 
+@property NSArray *facebookFriends;
+@property NSDictionary *facebookPictures;
 
 @end
