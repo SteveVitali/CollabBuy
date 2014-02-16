@@ -687,7 +687,7 @@
         <scene sceneID="YCg-1y-EqU">
             <objects>
                 <navigationController definesPresentationContext="YES" id="KFd-Du-uGF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Circles" image="glyphicons_043_group.png" id="Q0p-Ex-yrL"/>
+                    <tabBarItem key="tabBarItem" title="Circles" image="circles.png" id="Q0p-Ex-yrL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qBi-H6-7qT">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -703,7 +703,7 @@
         <scene sceneID="9LW-uG-OsW">
             <objects>
                 <navigationController definesPresentationContext="YES" id="lrP-aE-zMv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Invoices" image="glyphicons_449_fax.png" id="dnM-P8-cU6"/>
+                    <tabBarItem key="tabBarItem" title="Invoices" image="invoices.png" id="dnM-P8-cU6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KVV-Dt-DRe">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -715,11 +715,11 @@
             </objects>
             <point key="canvasLocation" x="282" y="1232"/>
         </scene>
-        <!--Navigation Controller - Friends-->
+        <!--Navigation Controller - Contacts-->
         <scene sceneID="yHN-b0-5Iv">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Fud-6J-SOf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" image="glyphicons_088_address_book.png" id="yYC-wK-vpY"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Contacts" image="contact.png" id="yYC-wK-vpY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="684-OS-u7L">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -735,7 +735,9 @@
         <scene sceneID="sGu-yc-HTY">
             <objects>
                 <navigationController storyboardIdentifier="MyItemsNavigationController" definesPresentationContext="YES" id="bS6-wT-VOr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="glyphicons_208_cart_out.png" id="dCS-Q1-GTn"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="shopping.png" id="dCS-Q1-GTn">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="4" vertical="0.0"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ROL-NS-zcZ">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -813,10 +815,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="glyphicons_043_group.png" width="35" height="22"/>
-        <image name="glyphicons_088_address_book.png" width="22" height="24"/>
-        <image name="glyphicons_208_cart_out.png" width="26" height="25"/>
-        <image name="glyphicons_449_fax.png" width="24" height="23"/>
+        <image name="circles.png" width="32" height="32"/>
+        <image name="contact.png" width="32" height="32"/>
+        <image name="invoices.png" width="32" height="32"/>
+        <image name="shopping.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
