@@ -68,4 +68,6 @@
 @property (nonatomic, assign)       CGFloat badgeRightOffset;
 @property (nonatomic, TD_STRONG)    NSMutableArray *resizeableLabels;
 
+@property NSNumber *horizontalOffset;
+
 @end
