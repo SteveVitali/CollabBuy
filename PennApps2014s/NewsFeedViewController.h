@@ -10,6 +10,12 @@
 
 @interface NewsFeedViewController : ListFriendItemsViewController
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *claimButton;
 
+@property PFObject *friendObject;
+@property NSMutableArray *selected;
+
+- (void)executeQueryAndReloadTable;
+- (void)refresh:(UIRefreshControl *)refreshControl;
 
 @end

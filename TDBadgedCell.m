@@ -271,6 +271,11 @@
 		CGRect badgeframe = CGRectMake(self.contentView.frame.size.width - (badgeSize.width + 13 + self.badgeRightOffset),
 									   (CGFloat)round((self.contentView.frame.size.height - (badgeSize.height + (50/badgeSize.height))) / 2),
 									   badgeSize.width + 13, badgeSize.height + (50/badgeSize.height));
+        
+        
+        badgeframe = CGRectMake(self.contentView.frame.size.width - (badgeSize.width + 13 + self.badgeRightOffset) - self.horizontalOffset.floatValue,
+									   (CGFloat)round((self.contentView.frame.size.height - (badgeSize.height + (50/badgeSize.height))) / 2),
+									   badgeSize.width + 13, badgeSize.height + (50/badgeSize.height));
 		
         // Enable shadows if we want them
 		if(self.showShadow)

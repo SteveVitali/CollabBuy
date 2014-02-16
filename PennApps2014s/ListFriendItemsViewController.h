@@ -9,6 +9,7 @@
 #import "ListTableViewController.h"
 
 @interface ListFriendItemsViewController : ListTableViewController
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *claimButton;
 
 @property PFObject *friendObject;

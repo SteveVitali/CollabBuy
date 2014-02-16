@@ -17,16 +17,17 @@
                     </tabBar>
                     <connections>
                         <segue destination="bS6-wT-VOr" kind="relationship" relationship="viewControllers" id="hiE-jM-omR"/>
-                        <segue destination="lrP-aE-zMv" kind="relationship" relationship="viewControllers" id="1ea-no-el8"/>
+                        <segue destination="6Cn-ba-H1y" kind="relationship" relationship="viewControllers" id="VwA-ie-1hS"/>
                         <segue destination="Fud-6J-SOf" kind="relationship" relationship="viewControllers" id="uZc-xP-tTk"/>
                         <segue destination="KFd-Du-uGF" kind="relationship" relationship="viewControllers" id="uqs-bo-BgF"/>
+                        <segue destination="lrP-aE-zMv" kind="relationship" relationship="viewControllers" id="1ea-no-el8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ifm-sv-c7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-186" y="271"/>
         </scene>
-        <!--My Items View Controller - My Items-->
+        <!--My Items View Controller - My Shopping List-->
         <scene sceneID="dSB-XU-JRV">
             <objects>
                 <tableViewController storyboardIdentifier="MyItemsViewController" id="V3a-YK-Df7" customClass="MyItemsViewController" sceneMemberID="viewController">
@@ -64,7 +65,7 @@
                     <toolbarItems>
                         <barButtonItem title="Item" id="r89-e9-6xB"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="My Items" id="NE8-Ru-VXt">
+                    <navigationItem key="navigationItem" title="My Shopping List" id="NE8-Ru-VXt">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dV4-CA-2fm">
                             <connections>
                                 <action selector="didPressAddButton" destination="V3a-YK-Df7" id="B0p-vU-JsE"/>
@@ -726,6 +727,52 @@
             </objects>
             <point key="canvasLocation" x="282" y="1925"/>
         </scene>
+        <!--News Feed View Controller - Root View Controller-->
+        <scene sceneID="SBj-WH-Pqw">
+            <objects>
+                <tableViewController id="n22-Cg-bUX" customClass="NewsFeedViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CiC-Iu-4jU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Rf5-Xf-LMV">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rf5-Xf-LMV" id="kcZ-JR-3HC">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="EVA-DZ-kIB">
+                        <barButtonItem key="rightBarButtonItem" title="Claim Items" id="rD7-bP-elD"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="claimButton" destination="rD7-bP-elD" id="CAW-z9-4Ad"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZc-59-MIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="758" y="2592"/>
+        </scene>
+        <!--Navigation Controller - Feed-->
+        <scene sceneID="LYI-72-EUk">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="6Cn-ba-H1y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed.png" id="aST-zB-Kpm"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pCx-jg-Idy">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="n22-Cg-bUX" kind="relationship" relationship="rootViewController" id="w9h-kR-USv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8bU-zJ-UWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="282" y="2592"/>
+        </scene>
         <!--Navigation Controller - Invoices-->
         <scene sceneID="9LW-uG-OsW">
             <objects>
@@ -844,6 +891,7 @@
     <resources>
         <image name="circles.png" width="32" height="32"/>
         <image name="contact.png" width="32" height="32"/>
+        <image name="feed.png" width="32" height="32"/>
         <image name="invoices.png" width="32" height="32"/>
         <image name="shopping.png" width="32" height="32"/>
     </resources>
