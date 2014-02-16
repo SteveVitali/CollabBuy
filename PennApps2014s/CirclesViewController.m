@@ -7,6 +7,8 @@
 //
 
 #import "CirclesViewController.h"
+#import "CreateCircleViewController.h"
+#import <Parse/Parse.h>
 
 @interface CirclesViewController ()
 
@@ -34,20 +36,20 @@
     
     PFQuery *userCirclesQuery = [PFQuery queryWithClassName:@"Circle"];
     
-    [userCirclesQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [userCirclesQuery orderByDescending:@"createdAt"];
-    
     return userCirclesQuery;
 }
 
 - (void)executeQueryAndReloadTable {
     
-    [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        self.circles = objects;
-        
-        [self.tableView reloadData];
-        
+    PFQuery *query = [PFQuery queryWithClassName:@"Circle"];
+    // NSString *currentUserID = [[PFUser currentUser] objectForKey:@"facebookID"];
+    // [query whereKey:@"members" equalTo:@currentUserID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *userCircles, NSError *error) {
+        if (!error) {
+            self.circles = [[NSArray alloc] initWithArray:userCircles];
+            
+            [self.tableView reloadData];
+        }
     }];
 }
 
@@ -81,6 +83,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:CellIdentifier];
     }
+    
+    cell.textLabel.text = [self.circles objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -124,16 +128,17 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"openFriendItems"]) {
+        
+        CreateCircleViewController *controller = (CreateCircleViewController *)[segue.destinationViewController viewControllers][0];
+        
+        controller.creator = self;
+    }
 }
-
- */
 
 @end

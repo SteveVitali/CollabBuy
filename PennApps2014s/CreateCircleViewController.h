@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Steve John Vitali. All rights reserved.
 //
 
-#import "QueryTableViewController.h"
+#import "CirclesViewController.h"
 
 @interface CreateCircleViewController : QueryTableViewController
 
@@ -17,6 +17,8 @@
 @property NSMutableData *imageData;
 
 @property NSMutableArray *selected;
+
+@property CirclesViewController *creator;
 
 @property (weak, nonatomic) IBOutlet UITextField *circleNameInput;
 

@@ -98,8 +98,9 @@
 
 - (IBAction)didPressSave:(id)sender {
     
-    // Do Save ish
-    
+    [self saveCircle:(NSString *)self.circleNameInput.text withFriends:(NSArray *)self.selected];
+    [self.creator executeQueryAndReloadTable];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)saveCircle:(NSString *)circleName withFriends:(NSArray *)circleMembers {
@@ -111,7 +112,6 @@
     
     [circle saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"gurl, circle saved to Parse");
-        // Add other code here?
     }];
 }
 

@@ -15,4 +15,6 @@
 
 @property NSArray *circles;
 
+- (void)executeQueryAndReloadTable;
+
 @end
