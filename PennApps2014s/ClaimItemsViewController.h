@@ -23,5 +23,5 @@
 // This is obviously the wrong way to do delegation
 // But it will work anyway.
 @property ListFriendItemsViewController *delegate;
-
+ 
 @end

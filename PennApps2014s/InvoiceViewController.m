@@ -69,6 +69,7 @@
     // Assumes "cancel" button not pressed in Venmo app
     [self setTransactionExecuted:self.invoice];
     [self sendApptoVenmoWithAmount:totalPrice note:description toUserHandle:userHandle];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)setTransactionExecuted:(PFObject *)invoice {
@@ -106,7 +107,6 @@
 - (IBAction)didPressTestVenmoButton:(id)sender {
     
     NSLog(@"wasdfasdf");
-
 }
 
 #pragma mark - Table view data source

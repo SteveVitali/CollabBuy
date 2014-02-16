@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    //[super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self.claimButton setEnabled:NO];
     
@@ -98,7 +98,7 @@
     TDBadgedCell *cell; //= [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     if (cell == nil) {
-        cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[TDBadgedCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                    reuseIdentifier:CellIdentifier];
     }
     
