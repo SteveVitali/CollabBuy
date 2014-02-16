@@ -10,7 +10,7 @@
 
 @interface ListTableViewController : QueryTableViewController
 
-@property NSArray *items;
+@property NSMutableArray *items;
 
 - (void)executeQueryAndReloadTable;
 

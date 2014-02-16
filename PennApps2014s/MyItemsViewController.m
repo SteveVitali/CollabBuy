@@ -127,7 +127,6 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
             [self executeQueryAndReloadTable];
         }];
     }];
-    
 }
 
 - (PFQuery *)queryForTable {
@@ -398,14 +397,15 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
      return YES;
  }
 
-
  // Override to support editing the table view.
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
  {
      if (editingStyle == UITableViewCellEditingStyleDelete) {
          // Delete the row from the data source
-         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-         [[self.items objectAtIndex:indexPath.row] deleteInBackground];
+         //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+         [[self.items objectAtIndex:indexPath.row] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+             [self executeQueryAndReloadTable];
+         }];
      }
      else if (editingStyle == UITableViewCellEditingStyleInsert) {
          // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
