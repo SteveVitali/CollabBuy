@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Y1s-oQ-YNo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Y1s-oQ-YNo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -200,13 +200,13 @@
                                 <rect key="frame" x="26" y="111" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F8H-dW-ncL">
                                 <rect key="frame" x="26" y="178" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -260,13 +260,13 @@
                                 <rect key="frame" x="20" y="100" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7l8-G8-qiB">
                                 <rect key="frame" x="20" y="167" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -311,7 +311,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="53"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hA5-v9-sM6">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hA5-v9-sM6">
                                             <rect key="frame" x="20" y="5" width="43" height="43"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
@@ -530,6 +530,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="yLY-Sp-iKB" id="OyN-y9-Jch"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqa-5n-Gly" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -656,7 +659,7 @@
                             <rect key="frame" x="93" y="7" width="134" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                         </textField>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="CWc-bu-hml"/>
                     </navigationItem>
@@ -684,7 +687,7 @@
         <scene sceneID="YCg-1y-EqU">
             <objects>
                 <navigationController definesPresentationContext="YES" id="KFd-Du-uGF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Circles" image="glyphicons_043_group.png" id="Q0p-Ex-yrL"/>
+                    <tabBarItem key="tabBarItem" title="Circles" image="circles.png" id="Q0p-Ex-yrL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qBi-H6-7qT">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -700,7 +703,7 @@
         <scene sceneID="9LW-uG-OsW">
             <objects>
                 <navigationController definesPresentationContext="YES" id="lrP-aE-zMv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Invoices" image="glyphicons_449_fax.png" id="dnM-P8-cU6"/>
+                    <tabBarItem key="tabBarItem" title="Invoices" image="invoices.png" id="dnM-P8-cU6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KVV-Dt-DRe">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -712,11 +715,11 @@
             </objects>
             <point key="canvasLocation" x="282" y="1232"/>
         </scene>
-        <!--Navigation Controller - Friends-->
+        <!--Navigation Controller - Contacts-->
         <scene sceneID="yHN-b0-5Iv">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Fud-6J-SOf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" image="glyphicons_088_address_book.png" id="yYC-wK-vpY"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Contacts" image="contact.png" id="yYC-wK-vpY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="684-OS-u7L">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -732,7 +735,9 @@
         <scene sceneID="sGu-yc-HTY">
             <objects>
                 <navigationController storyboardIdentifier="MyItemsNavigationController" definesPresentationContext="YES" id="bS6-wT-VOr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="glyphicons_208_cart_out.png" id="dCS-Q1-GTn"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="shopping.png" id="dCS-Q1-GTn">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="4" vertical="0.0"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ROL-NS-zcZ">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -810,10 +815,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="glyphicons_043_group.png" width="35" height="22"/>
-        <image name="glyphicons_088_address_book.png" width="22" height="24"/>
-        <image name="glyphicons_208_cart_out.png" width="26" height="25"/>
-        <image name="glyphicons_449_fax.png" width="24" height="23"/>
+        <image name="circles.png" width="32" height="32"/>
+        <image name="contact.png" width="32" height="32"/>
+        <image name="invoices.png" width="32" height="32"/>
+        <image name="shopping.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

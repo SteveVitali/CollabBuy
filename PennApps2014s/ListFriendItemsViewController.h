@@ -15,5 +15,6 @@
 @property NSMutableArray *selected;
 
 - (void)executeQueryAndReloadTable;
+- (void)refresh:(UIRefreshControl *)refreshControl;
 
 @end
