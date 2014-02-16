@@ -9,6 +9,7 @@
 #import "ClaimItemsViewController.h"
 #import "ClaimItemsTableViewCell.h"
 #import <Parse/Parse.h>
+#import "ListFriendItemsViewController.h"
 
 @interface ClaimItemsViewController ()
 
@@ -46,6 +47,8 @@
     
     for (ClaimItemsTableViewCell *cell in allCells) {
         
+        if ([cell.price.text isEqualToString:@""]) return;
+        
         cell.price.text = [ClaimItemsTableViewCell formatTextAsCurrency:cell.price.text];
         [priceStrings addObject:cell.price.text];
     }
@@ -56,7 +59,9 @@
     }
     
     [self submitInvoiceToUser:self.recipient withItems:self.claimedItems andPrices:priceNumbers];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.delegate executeQueryAndReloadTable];
+    }];
 }
 
 - (void)submitInvoiceToUser:(PFObject *)recipient withItems:(NSArray *)items andPrices:(NSArray *)prices {

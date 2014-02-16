@@ -207,6 +207,7 @@
         
         destinationController.claimedItems = [NSArray arrayWithArray:_selected];
         destinationController.recipient    = self.friendObject;
+        destinationController.delegate = self;
         
         NSLog(@"dest: %@", destinationController.class);
         //destinationController.delegate = self;

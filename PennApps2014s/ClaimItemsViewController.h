@@ -7,13 +7,19 @@
 //
 
 #import <Parse/Parse.h>
+#import "ListFriendItemsViewController.h"
 
 @interface ClaimItemsViewController : UITableViewController
 
 @property NSArray *claimedItems;
 @property PFObject *recipient;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 - (IBAction)didPressCancel:(id)sender;
 - (IBAction)didPressSave:(id)sender;
+
+// This is obviously the wrong way to do delegation
+// But it will work anyway.
+@property ListFriendItemsViewController *delegate;
 
 @end
