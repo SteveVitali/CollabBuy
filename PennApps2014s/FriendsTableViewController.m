@@ -139,7 +139,7 @@
     
     UIImage *thumbnail = [self.facebookPictures objectForKey:[object objectForKey:@"facebookID"]];
     if (thumbnail == nil) {
-        thumbnail = [UIImage imageNamed:@"glyphicons_003_user.png"];
+        thumbnail = [UIImage imageNamed:@"profile@2x.png"];
     }
     CGSize itemSize = CGSizeMake(43, 43);
     UIGraphicsBeginImageContext(itemSize);
