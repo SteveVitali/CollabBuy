@@ -76,7 +76,6 @@
     return userItemsQuery;
 }
 
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -89,6 +88,12 @@
 {
     // Return the number of rows in the section.
     return [self.items count];
+}
+
+- (UIImage *)getDatProfilePictureFromUser:(PFUser *)user {
+    
+    return [UIImage imageWithData:[((PFFile *)[user valueForKey:@"profilePicture"]) getData]];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,6 +147,8 @@
         //cell.badgeString = @"";
         //cell.badgeColor = [UIColor redColor];
     }
+    
+    //cell.imageView.image = [self getDatProfilePictureFromUser:[self.items objectAtIndex:indexPath.row] valueForKey:@"user"];
     
     cell.horizontalOffset = [NSNumber numberWithInt:28];
     
