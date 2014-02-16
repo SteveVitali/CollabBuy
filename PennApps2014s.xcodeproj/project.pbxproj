@@ -49,6 +49,7 @@
 		113AF5E618B01D540058AAC3 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113AF5E518B01D540058AAC3 /* TDBadgedCell.m */; };
 		113AF5E918B02BD60058AAC3 /* PreviewInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113AF5E818B02BD60058AAC3 /* PreviewInvoiceViewController.m */; };
 		1196BD4C18AF54FF0089EB9C /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */; };
+		11C4F07518B0A73900AC25BB /* NewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C4F07418B0A73900AC25BB /* NewsFeedViewController.m */; };
 		1C20216F18B09D8300B89F2E /* newsfeed.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C20216D18B09D8300B89F2E /* newsfeed.png */; };
 		1C20217018B09D8300B89F2E /* newsfeed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C20216E18B09D8300B89F2E /* newsfeed@2x.png */; };
 		1C20217418B09DD200B89F2E /* circles.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C20217218B09DD200B89F2E /* circles.png */; };
@@ -138,6 +139,8 @@
 		113AF5E818B02BD60058AAC3 /* PreviewInvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewInvoiceViewController.m; sourceTree = "<group>"; };
 		1196BD4A18AF54FF0089EB9C /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
 		1196BD4B18AF54FF0089EB9C /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
+		11C4F07318B0A73900AC25BB /* NewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedViewController.h; sourceTree = "<group>"; };
+		11C4F07418B0A73900AC25BB /* NewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedViewController.m; sourceTree = "<group>"; };
 		1C20216D18B09D8300B89F2E /* newsfeed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsfeed.png; sourceTree = "<group>"; };
 		1C20216E18B09D8300B89F2E /* newsfeed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newsfeed@2x.png"; sourceTree = "<group>"; };
 		1C20217218B09DD200B89F2E /* circles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circles.png; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 				11076C2D18AF083600A87B49 /* ListFriendItemsViewController.m */,
 				111E0CE518AF1F72004BBF75 /* ListTableViewController.h */,
 				111E0CE618AF1F72004BBF75 /* ListTableViewController.m */,
+				11C4F07318B0A73900AC25BB /* NewsFeedViewController.h */,
+				11C4F07418B0A73900AC25BB /* NewsFeedViewController.m */,
 			);
 			name = ListTableViewControllers;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 				11076C2418AF071200A87B49 /* CirclesViewController.m in Sources */,
 				11076C3718AF091100A87B49 /* InvoiceListViewController.m in Sources */,
 				11076C3D18AF092700A87B49 /* EditItemViewController.m in Sources */,
+				11C4F07518B0A73900AC25BB /* NewsFeedViewController.m in Sources */,
 				11076C4018AF094000A87B49 /* CreateCircleViewController.m in Sources */,
 				11076C3118AF08F000A87B49 /* CreateItemViewController.m in Sources */,
 				11076C2718AF07BD00A87B49 /* FriendsTableViewController.m in Sources */,
