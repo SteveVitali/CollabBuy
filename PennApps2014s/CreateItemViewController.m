@@ -29,21 +29,24 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self.nameField setDelegate:self];
+    [self.doneButton setEnabled:NO];
+    
+    [self.nameField addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
+- (void)textFieldDidChange {
     
-    
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    
-    if ([[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]) {
+    if ([[self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]) {
         [self.doneButton setEnabled:NO];
     }
     else {
         [self.doneButton setEnabled:YES];
     }
+}
+
+- (IBAction)didPressCancel:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)didPressDone:(id)sender {

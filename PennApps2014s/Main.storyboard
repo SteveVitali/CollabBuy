@@ -272,6 +272,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="9xM-yf-RXA">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="a2J-uS-FC8">
+                            <connections>
+                                <action selector="didPressCancel:" destination="S9F-iU-z5e" id="GIo-Eb-xX6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="MdO-tn-Xht">
                             <connections>
                                 <action selector="didPressDone:" destination="S9F-iU-z5e" id="JZ6-v4-F3T"/>

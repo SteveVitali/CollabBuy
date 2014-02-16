@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *descriptionField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
-
+- (IBAction)didPressCancel:(id)sender;
 - (IBAction)didPressDone:(id)sender;
 
 @property (weak) id<CreateItemViewControllerDelegate> delegate;
