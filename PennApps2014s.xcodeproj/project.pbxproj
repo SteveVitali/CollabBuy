@@ -56,6 +56,7 @@
 		BC8BE67718AF6F950035A493 /* glyphicons_208_cart_out.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67618AF6F950035A493 /* glyphicons_208_cart_out.png */; };
 		BC8BE67918AF6FA60035A493 /* glyphicons_280_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */; };
 		BC8BE68018AFB8210035A493 /* ClaimItemsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8BE67F18AFB8210035A493 /* ClaimItemsTableViewCell.m */; };
+		BCFC856D18B0A06C00BDA310 /* glyphicons_003_user.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC856C18B0A06C00BDA310 /* glyphicons_003_user.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_280_settings.png; sourceTree = "<group>"; };
 		BC8BE67E18AFB8210035A493 /* ClaimItemsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimItemsTableViewCell.h; sourceTree = "<group>"; };
 		BC8BE67F18AFB8210035A493 /* ClaimItemsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimItemsTableViewCell.m; sourceTree = "<group>"; };
+		BCFC856C18B0A06C00BDA310 /* glyphicons_003_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_003_user.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				BC5BCED818B0715A00E5BC36 /* glyphicons_088_address_book.png */,
+				BCFC856C18B0A06C00BDA310 /* glyphicons_003_user.png */,
 				BC5BCED618B070FE00E5BC36 /* glyphicons_340_globe.png */,
 				BC8BE67818AF6FA60035A493 /* glyphicons_280_settings.png */,
 				BC8BE67218AF6F7E0035A493 /* glyphicons_043_group.png */,
@@ -443,6 +446,7 @@
 				11076BD718AF030E00A87B49 /* InfoPlist.strings in Resources */,
 				BC8BE67718AF6F950035A493 /* glyphicons_208_cart_out.png in Resources */,
 				11076C0818AF03A900A87B49 /* Main.storyboard in Resources */,
+				BCFC856D18B0A06C00BDA310 /* glyphicons_003_user.png in Resources */,
 				BC8BE67518AF6F870035A493 /* glyphicons_449_fax.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
