@@ -42,7 +42,7 @@
 		11076C3718AF091100A87B49 /* InvoiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3618AF091100A87B49 /* InvoiceListViewController.m */; };
 		11076C3A18AF091D00A87B49 /* InvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3918AF091D00A87B49 /* InvoiceViewController.m */; };
 		11076C3D18AF092700A87B49 /* EditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3C18AF092700A87B49 /* EditItemViewController.m */; };
-		11076C4018AF094000A87B49 /* FindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3F18AF094000A87B49 /* FindFriendsViewController.m */; };
+		11076C4018AF094000A87B49 /* CreateCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11076C3F18AF094000A87B49 /* CreateCircleViewController.m */; };
 		111E0CE718AF1F72004BBF75 /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E0CE618AF1F72004BBF75 /* ListTableViewController.m */; };
 		113AF5DE18AFFD130058AAC3 /* VenmoHandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113AF5DD18AFFD130058AAC3 /* VenmoHandleViewController.m */; };
 		113AF5E218B003770058AAC3 /* LibraryAPi.m in Sources */ = {isa = PBXBuildFile; fileRef = 113AF5E118B003770058AAC3 /* LibraryAPi.m */; };
@@ -118,8 +118,8 @@
 		11076C3918AF091D00A87B49 /* InvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoiceViewController.m; sourceTree = "<group>"; };
 		11076C3B18AF092700A87B49 /* EditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditItemViewController.h; sourceTree = "<group>"; };
 		11076C3C18AF092700A87B49 /* EditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditItemViewController.m; sourceTree = "<group>"; };
-		11076C3E18AF094000A87B49 /* FindFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFriendsViewController.h; sourceTree = "<group>"; };
-		11076C3F18AF094000A87B49 /* FindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsViewController.m; sourceTree = "<group>"; };
+		11076C3E18AF094000A87B49 /* CreateCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCircleViewController.h; sourceTree = "<group>"; };
+		11076C3F18AF094000A87B49 /* CreateCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCircleViewController.m; sourceTree = "<group>"; };
 		111E0CE518AF1F72004BBF75 /* ListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewController.h; sourceTree = "<group>"; };
 		111E0CE618AF1F72004BBF75 /* ListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewController.m; sourceTree = "<group>"; };
 		113AF5DC18AFFD130058AAC3 /* VenmoHandleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoHandleViewController.h; sourceTree = "<group>"; };
@@ -307,8 +307,8 @@
 				11076C1F18AF06E400A87B49 /* QueryTableViewController.m */,
 				11076C3518AF091100A87B49 /* InvoiceListViewController.h */,
 				11076C3618AF091100A87B49 /* InvoiceListViewController.m */,
-				11076C3E18AF094000A87B49 /* FindFriendsViewController.h */,
-				11076C3F18AF094000A87B49 /* FindFriendsViewController.m */,
+				11076C3E18AF094000A87B49 /* CreateCircleViewController.h */,
+				11076C3F18AF094000A87B49 /* CreateCircleViewController.m */,
 			);
 			name = QueryTableViewControllers;
 			sourceTree = "<group>";
@@ -470,7 +470,7 @@
 				11076C2418AF071200A87B49 /* CirclesViewController.m in Sources */,
 				11076C3718AF091100A87B49 /* InvoiceListViewController.m in Sources */,
 				11076C3D18AF092700A87B49 /* EditItemViewController.m in Sources */,
-				11076C4018AF094000A87B49 /* FindFriendsViewController.m in Sources */,
+				11076C4018AF094000A87B49 /* CreateCircleViewController.m in Sources */,
 				11076C3118AF08F000A87B49 /* CreateItemViewController.m in Sources */,
 				11076C2718AF07BD00A87B49 /* FriendsTableViewController.m in Sources */,
 				113AF5E918B02BD60058AAC3 /* PreviewInvoiceViewController.m in Sources */,
