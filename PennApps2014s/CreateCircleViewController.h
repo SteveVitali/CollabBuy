@@ -8,8 +8,12 @@
 
 #import "QueryTableViewController.h"
 
-@interface FindFriendsViewController : QueryTableViewController
+@interface CreateCircleViewController : QueryTableViewController
 
 @property NSArray *facebookFriends;
+@property NSDictionary *facebookPictures;
+@property NSMutableArray *selected;
+
+@property NSMutableData *imageData;
 
 @end
