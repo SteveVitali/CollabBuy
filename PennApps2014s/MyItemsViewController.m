@@ -246,6 +246,11 @@ static NSString *const kVenmoAppSecret  = @"XhNNkXhhxfrkxvDpuzfyxnwFuCwV9kbr";
             [[PFUser currentUser] setValue:facebookID forKey:@"facebookID"];
             [[PFUser currentUser] setValue:name forKey:@"name"];
             
+            // Set up notification stuff
+            PFInstallation *installation = [PFInstallation currentInstallation];
+            installation[@"user"] = [PFUser currentUser];
+            [installation saveInBackground];
+            
             [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
                 [self executeQueryAndReloadTable];

@@ -14,6 +14,7 @@
 #import "MyItemsViewController.h"
 #import "InvoiceViewController.h"
 #import "LibraryAPi.h"
+#import "InvoiceListViewController.h"
 
 @implementation AppDelegate
 
@@ -41,15 +42,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                  UIRemoteNotificationTypeSound];
     
     self.venmoClient = [[LibraryAPI sharedInstance] venmoClient];
-    
-    // Create our Installation query
-    PFQuery *pushQuery = [PFInstallation query];
-    [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
-    
-    // Send push notification to query
-    [PFPush sendPushMessageToQueryInBackground:pushQuery
-                                   withMessage:@"Hello World!"];
 
+    
+    
     return YES;
 }
 
@@ -74,7 +69,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message
                                                                    delegate:nil cancelButtonTitle:@"OK"
                                                           otherButtonTitles:nil];
-                //[alertView show];
+                [alertView show];
                 
             } else { // error
                 NSLog(@"transaction error code: %lld", (long long)error.code);
@@ -117,7 +112,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
+    NSLog(@"receiveved;ladjksf;lakjsdf;alkjsdf!!!");
     [PFPush handlePush:userInfo];
+    
+    InvoiceListViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"invoiceList"];
+    [self.window setRootViewController:controller];
 }
 
 @end
