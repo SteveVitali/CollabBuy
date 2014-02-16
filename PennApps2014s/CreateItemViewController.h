@@ -10,11 +10,14 @@
 
 @protocol CreateItemViewControllerDelegate;
 
-@interface CreateItemViewController : UIViewController
+@interface CreateItemViewController : UIViewController <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+
 
 - (IBAction)didPressDone:(id)sender;
 

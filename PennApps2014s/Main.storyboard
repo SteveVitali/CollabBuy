@@ -17,8 +17,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="bS6-wT-VOr" kind="relationship" relationship="viewControllers" id="hiE-jM-omR"/>
-                        <segue destination="Fud-6J-SOf" kind="relationship" relationship="viewControllers" id="uZc-xP-tTk"/>
                         <segue destination="lrP-aE-zMv" kind="relationship" relationship="viewControllers" id="1ea-no-el8"/>
+                        <segue destination="Fud-6J-SOf" kind="relationship" relationship="viewControllers" id="uZc-xP-tTk"/>
                         <segue destination="KFd-Du-uGF" kind="relationship" relationship="viewControllers" id="uqs-bo-BgF"/>
                     </connections>
                 </tabBarController>
@@ -281,6 +281,7 @@
                     <connections>
                         <outlet property="descriptionField" destination="7l8-G8-qiB" id="3Gz-ud-dUr"/>
                         <outlet property="descriptionLabel" destination="vjr-uG-KYY" id="gB4-tI-1xP"/>
+                        <outlet property="doneButton" destination="MdO-tn-Xht" id="tIf-Tt-r3s"/>
                         <outlet property="nameField" destination="sXG-ud-a4W" id="ThI-XV-eEc"/>
                         <outlet property="nameLabel" destination="Tn1-Wa-YcL" id="CNp-tu-fwq"/>
                     </connections>
@@ -574,7 +575,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4VL-DH-rqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1623" y="-97"/>
+            <point key="canvasLocation" x="1631" y="-97"/>
         </scene>
         <!--Invoice List View Controller - Pending Payments-->
         <scene sceneID="ZLJ-31-Wox">
@@ -621,10 +622,10 @@
             </objects>
             <point key="canvasLocation" x="758" y="1232"/>
         </scene>
-        <!--Settings View Controller - Settings-->
+        <!--Circles View Controller - Circles-->
         <scene sceneID="FQX-zn-EiU">
             <objects>
-                <tableViewController id="1re-0x-dvj" customClass="SettingsViewController" sceneMemberID="viewController">
+                <tableViewController id="1re-0x-dvj" customClass="CirclesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="E4G-ET-gWx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -640,8 +641,15 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="sqP-xd-jAC"/>
+                    <navigationItem key="navigationItem" title="Circles" id="sqP-xd-jAC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OiI-I1-FPU">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="1re-0x-dvj" id="Cdu-ih-8hf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="OiI-I1-FPU" id="FNN-9L-Oep"/>
                         <segue destination="cb1-E2-uZo" kind="modal" identifier="findFriends" id="cYh-fK-UWy"/>
                     </connections>
                 </tableViewController>
@@ -649,11 +657,11 @@
             </objects>
             <point key="canvasLocation" x="758" y="1925"/>
         </scene>
-        <!--Navigation Controller - Settings-->
+        <!--Navigation Controller - Circles-->
         <scene sceneID="YCg-1y-EqU">
             <objects>
                 <navigationController definesPresentationContext="YES" id="KFd-Du-uGF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="glyphicons_280_settings.png" id="Q0p-Ex-yrL"/>
+                    <tabBarItem key="tabBarItem" title="Circles" image="glyphicons_280_settings.png" id="Q0p-Ex-yrL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qBi-H6-7qT">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -790,6 +798,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="XlE-h5-NJ3"/>
+        <segue reference="cYh-fK-UWy"/>
     </inferredMetricsTieBreakers>
 </document>

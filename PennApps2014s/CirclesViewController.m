@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Steve John Vitali. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "CirclesViewController.h"
 
-@interface SettingsViewController ()
+@interface CirclesViewController ()
 
 @end
 
-@implementation SettingsViewController
+@implementation CirclesViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,13 +26,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self executeQueryAndReloadTable];
 }
+
+- (PFQuery *)queryForTable {
+    
+    PFQuery *userCirclesQuery = [PFQuery queryWithClassName:@"Circle"];
+    
+    [userCirclesQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [userCirclesQuery orderByDescending:@"createdAt"];
+    
+    return userCirclesQuery;
+}
+
+
+
+- (void)executeQueryAndReloadTable {
+    
+    [[self queryForTable] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        self.circles = objects;
+        
+        [self.tableView reloadData];
+        
+    }];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -44,16 +65,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.circles count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

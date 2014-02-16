@@ -28,6 +28,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.nameField setDelegate:self];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if ([[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]) {
+        [self.doneButton setEnabled:NO];
+    }
+    else {
+        [self.doneButton setEnabled:YES];
+    }
 }
 
 - (IBAction)didPressDone:(id)sender {
