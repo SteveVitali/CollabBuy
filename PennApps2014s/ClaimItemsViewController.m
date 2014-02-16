@@ -59,9 +59,6 @@
     }
     
     [self submitInvoiceToUser:self.recipient withItems:self.claimedItems andPrices:priceNumbers];
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self.delegate executeQueryAndReloadTable];
-    }];
 }
 
 - (void)submitInvoiceToUser:(PFObject *)recipient withItems:(NSArray *)items andPrices:(NSArray *)prices {
@@ -77,6 +74,10 @@
         
         NSLog(@"aw yeah, invoice sent");
         [self setPendingItems:items andInvoice:(PFObject *)invoice];
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self.delegate executeQueryAndReloadTable];
+        }];
     }];
 }
 
