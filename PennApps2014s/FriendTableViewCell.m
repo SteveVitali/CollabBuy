@@ -19,7 +19,6 @@
         // SM: Not needed?
         // self.nameLabel.textColor = [UIColor blackColor];
         
-        self.imageView.contentMode  = UIViewContentModeScaleAspectFit;
     }
     return self;
 }
