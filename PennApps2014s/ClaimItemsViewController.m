@@ -68,6 +68,38 @@
         [self submitInvoiceToUsers:self.recipients withItems:self.claimedItems andPrices:priceNumbers];
     }
 }
+ 
+- (void)sendDatPushNotificationDoe:(PFUser *)recipient {
+    
+    NSDictionary *data = @{
+                           @"sender": [PFUser currentUser].username,
+                           @"itemsList": [self getListOfItemsStringWithItems:self.claimedItems] // Photo's object id
+                           };
+    PFPush *push = [[PFPush alloc] init];
+    
+    PFQuery *pushQuery = [PFInstallation query];
+    [pushQuery whereKey:@"user" equalTo:recipient];
+    
+    [push setQuery:pushQuery];
+    
+    [push setMessage:@"helllllllll yeah"];
+    
+    [push setData:data];
+    [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"push sent, motherfucker");
+    }];
+}
+
+- (NSString *)getListOfItemsStringWithItems:(NSArray *)items {
+    
+    NSString *listString = @"";
+    for (PFObject *item in items) {
+        
+        listString = [listString stringByAppendingString:[NSString stringWithFormat:@"%@, ", [item valueForKey:@"name"]]];
+    }
+    listString = [listString stringByReplacingCharactersInRange:NSMakeRange(listString.length-2, 2) withString:@""];
+    return listString;
+}
 
 # pragma mark - Invoice Specific
 
@@ -82,6 +114,8 @@
     
     [invoice saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
+        [self sendDatPushNotificationDoe:[invoice valueForKey:@"recipient"]];
+
         NSLog(@"aw yeah, invoice sent");
         [self setPendingItems:items andInvoice:(PFObject *)invoice];
         
